@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sign in · Mithi Seller Center</title>
+  <meta name="description" content="Sign in, set up your shop and manage your products and orders on Mithi Seller Center.">
+  <meta name="theme-color" content="#f3eee2">
+  <meta name="color-scheme" content="light">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="images/icon.png">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="seller.css">
+</head>
+<body class="" data-page="login" data-group="auth">
+
+  <main class="auth-page">
+    <div class="auth-bags" aria-hidden="true">
+      <img class="bag-back" src="images/bag-orange.png" alt="" width="1000" height="798">
+      <img class="bag-blue" src="images/bag-blue.png" alt="" width="1000" height="798">
+      <img class="bag-orange" src="images/bag-orange.png" alt="" width="1000" height="798">
+    </div>
+
+    <div class="auth-wrap">
+      <section class="auth-hero">
+        <h1>
+          <span class="hero-name">Mithi</span>
+          <span class="hero-sub">Seller Center</span>
+        </h1>
+        <p class="auth-tagline">Welcome back, Sis!</p>
+
+        <div class="auth-bags-mobile" aria-hidden="true">
+          <img class="bag-blue" src="images/bag-blue.png" alt="" width="1000" height="798">
+          <img class="bag-orange" src="images/bag-orange.png" alt="" width="1000" height="798">
+        </div>
+      </section>
+
+      <section class="auth-card">
+        <div class="login-wrap">
+          <h2 class="login-title">Mithi Seller Center</h2>
+          <p class="login-lead">Sign in to manage your shop.</p>
+
+          <form class="login-form" id="login-form" novalidate>
+            <h3>Sign in to continue</h3>
+
+          <div class="auth-field" data-field="identifier">
+            <div class="auth-label-row">
+              <label class="auth-label" for="identifier">Username</label>
+            </div>
+            <input class="auth-input" id="identifier" name="identifier" type="text" placeholder="Enter username" data-placeholder="Enter username"  autocomplete="username">
+            <p class="auth-error" id="identifier-error" hidden></p>
+          </div>
+
+          <div class="auth-field" data-field="password">
+            <div class="auth-label-row">
+              <label class="auth-label" for="password">Password</label>
+              <button type="button" class="forgot-btn" id="forgot-btn">Forgot your password</button>
+            </div>
+            <input class="auth-input" id="password" name="password" type="password" placeholder="Enter Password" data-placeholder="Enter Password" autocomplete="current-password">
+            <p class="auth-error" id="password-error" hidden></p>
+          </div>
+            <p class="reset-hint" id="reset-hint" role="status" hidden>Password reset is not available yet. Please contact Mithi seller support.</p>
+
+            <button type="submit" class="btn-auth">Sign in</button>
+
+            <label class="remember">
+              <input class="sr-only" type="checkbox" name="remember">
+              <span class="remember-box" aria-hidden="true"></span>
+              Keep me signed in
+            </label>
+
+            <p class="login-next">Next: Seller dashboard</p>
+          </form>
+
+          <div class="divider-row">
+            <span class="line" aria-hidden="true"></span>
+            <span class="text">New to Mithi, Sis?</span>
+            <span class="line" aria-hidden="true"></span>
+          </div>
+
+          <a class="btn-secondary-auth" href="seller_signup.html">Create a seller account</a>
+        </div>
+      </section>
+    </div>
+  </main>
+  
+  <script src="seller.js"></script>
+</body>
+</html>

@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mithi - Payment Method</title>
+  <link rel="icon" type="image/png" href="pictures/icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Montserrat+Alternates:ital,wght@0,400;0,500;0,600;0,700;0,800;1,600;1,700;1,800&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="payment_method.css" />
+  <link rel="stylesheet" href="../../shared/nav_bar.css">
+</head>
+
+<body>
+
+  <div id="navbar-container"></div>
+
+  <main class="billing-page">
+
+    <section data-view="billing">
+      <div class="hero-banner">
+        <h1 class="page-heading">Bayad at Billing mo, Sis</h1>
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+          <a href="../../home_page/index.html">Home</a>
+          <span>/</span>
+          <a href="#" data-go="billing">Shopping cart</a>
+          <span>/</span>
+          <a href="../proceed_payment/proceed_payment.html">Transaction &amp; Billing</a>
+          <span>/</span>
+          <a href="#" class="current" aria-current="page">Payment Method</a>
+        </nav>
+      </div>
+
+      <div class="payment-split">
+        <div class="billing-card order-details-card">
+          <h2 class="section-title">Order Details</h2>
+
+          <form class="voucher-form" id="voucherForm1">
+            <input type="text" id="voucherInput1" class="voucher-input" placeholder="Enter Voucher"
+              aria-label="Enter Voucher" />
+            <button type="submit" class="btn-voucher-enter">Enter</button>
+          </form>
+
+          <dl class="summary-list">
+            <div class="summary-line">
+              <dt>Item ( 1 item)</dt>
+              <dd class="val-orange">₱30.00</dd>
+            </div>
+            <div class="summary-line">
+              <dt>Item Discount</dt>
+              <dd>-₱10.00</dd>
+            </div>
+            <div class="summary-line" id="promoRow">
+              <dt>GCash e-Wallet Promo</dt>
+              <dd id="promoVal">-₱10.00</dd>
+            </div>
+            <div class="summary-line" id="voucherDiscountRow" hidden>
+              <dt>Voucher Discount</dt>
+              <dd id="voucherDiscountVal">-₱10.00</dd>
+            </div>
+            <div class="summary-line">
+              <dt>Shipping Fee Total</dt>
+              <dd class="val-orange">₱50.00</dd>
+            </div>
+          </dl>
+
+          <hr class="summary-divider" />
+
+          <div class="summary-total-row">
+            <span class="summary-total-label">Total</span>
+            <span class="summary-total-amount" id="billingTotalAmount">₱60.00</span>
+          </div>
+
+          <!-- Customer Delivery Information -->
+          <div class="contact-info" id="delivery-info">
+
+            <h3>Contact Info</h3>
+
+            <p id="display-full-name"></p>
+            <p id="display-phone"></p>
+            <p id="display-street"></p>
+            <p id="display-location"></p>
+            <p id="display-postal-code"></p>
+            <p id="display-address-label"></p>
+
+          </div>
+
+          <div class="billing-cta-row">
+            <button type="button" class="btn-place-order" id="placeOrderBtn">Place Order</button>
+            <button type="button" class="btn-sim-fail" id="simulateFailBtn">Simulate Failed Payment</button>
+          </div>
+        </div>
+
+        <div class="billing-card payment-methods-card">
+          <h2 class="section-title">Payment methods</h2>
+          <p class="payment-sub">Choose how you would like to pay.</p>
+
+          <div class="payment-options" role="radiogroup" aria-label="Payment methods">
+            <button type="button" class="payment-option is-selected" data-method="gcash" role="radio"
+              aria-checked="true">
+              <span class="method-radio" aria-hidden="true"></span>
+              <span class="method-name">GCash</span>
+            </button>
+
+            <button type="button" class="payment-option" data-method="cod" role="radio" aria-checked="false">
+              <span class="method-radio" aria-hidden="true"></span>
+              <span class="method-name">Cash on Delivery</span>
+            </button>
+          </div>
+
+          <p class="payment-footnote">Your total is shown in the order details.</p>
+        </div>
+      </div>
+    </section>
+
+    <section data-view="failed" hidden>
+      <div class="hero-plain">
+        <h1 class="page-heading">Let’s try that payment again</h1>
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+          <a href="#" data-go="billing">Checkout</a>
+          <span>/</span>
+          <a href="#" class="current" aria-current="page">Payment</a>
+        </nav>
+      </div>
+
+      <div class="payment-split failed-split">
+        <div class="billing-card failed-main-card">
+          <div class="warning-badge" aria-hidden="true">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#9e3333" stroke-width="2.2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z" />
+              <line x1="12" y1="9" x2="12" y2="13" />
+              <line x1="12" y1="17" x2="12.01" y2="17" />
+            </svg>
+          </div>
+
+          <h2 class="failed-title">Your payment couldn’t be completed.</h2>
+          <p class="failed-desc">
+            Please check your payment details or choose another payment method.<br />
+            Your order is not confirmed yet.
+          </p>
+          <p class="failed-support">
+            If you see a pending charge, contact support before trying again.
+          </p>
+
+          <div class="failed-actions">
+            <button type="button" class="btn-retry-full" id="retryPaymentBtn">Retry payment</button>
+            <button type="button" class="btn-alt-method" id="chooseAnotherBtn">Choose another payment method</button>
+          </div>
+        </div>
+
+        <aside class="billing-card summary-side-card">
+          <div class="summary-card-header">
+            <h2>Order Summary</h2>
+            <p>A little closer to your next favorite.</p>
+          </div>
+
+          <div class="summary-card-body">
+            <form class="voucher-form compact" id="voucherForm2">
+              <input type="text" id="voucherInput2" class="voucher-input" placeholder="Enter voucher code"
+                aria-label="Enter voucher code" />
+              <button type="submit" class="btn-voucher-enter">Enter</button>
+            </form>
+
+            <div class="summary-select-row">
+              <span>Voucher</span>
+              <button type="button" class="btn-select-pill" id="selectVoucherBtn">Select</button>
+            </div>
+
+            <div class="summary-line">
+              <span>Subtotal (2 items)</span>
+              <strong class="val-orange">₱145.99</strong>
+            </div>
+            <div class="summary-line">
+              <span>Shipping</span>
+              <span class="muted-note">At checkout</span>
+            </div>
+
+            <hr class="orange-divider" />
+
+            <div class="summary-total-row compact">
+              <span class="summary-total-label">Estimated total</span>
+              <span class="estimated-total-val" id="failedTotalAmount">₱145.99</span>
+            </div>
+
+            <button type="button" class="btn-review-order" data-go="billing">Review order</button>
+
+            <p class="summary-fineprint">
+              Shipping and any voucher savings are confirmed at checkout.
+            </p>
+
+            <div class="tara-badge">
+              <span class="brand-mark sm" aria-hidden="true">M</span>
+              <span>Tara na, Sis!</span>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section data-view="confirmed" hidden>
+      <div class="billing-card confirmed-card">
+        <div class="confirm-check-circle" aria-hidden="true">
+          <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#9e6214" stroke-width="3"
+            stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="20 6 9 17 4 12" />
+          </svg>
+        </div>
+
+        <h1 class="confirm-heading">
+          Salamat, <span class="underline-accent">Sis. Your order is</span> confirmed!
+        </h1>
+
+        <p class="confirm-sub">
+          Your order details will be sent to your email.<br />
+          You can follow its progress in your orders.
+        </p>
+
+        <div class="confirm-summary-pill">
+          <span>2 items</span>
+          <strong class="confirm-price">₱145.99</strong>
+        </div>
+
+        <div class="progress-steps" role="list">
+          <div class="step-box is-active" role="listitem">
+            <span class="step-num">01</span>
+            <span class="step-label">Order received</span>
+          </div>
+          <div class="step-box" role="listitem">
+            <span class="step-num">02</span>
+            <span class="step-label">Preparing your order</span>
+          </div>
+          <div class="step-box" role="listitem">
+            <span class="step-num">03</span>
+            <span class="step-label">On its way</span>
+          </div>
+        </div>
+
+        <div class="confirm-actions">
+          <button type="button" class="btn-view-orders"
+            onclick="window.location.href='../purchase_history/purchase_history.html'">View my orders</button>
+          <button type="button" class="btn-keep-exploring"
+            onclick="window.location.href='../../home_page/index.html'">Keep exploring</button>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <script src="../../shared/nav_bar.js"></script>
+  <script src="payment_method.js"></script>
+  <script src="../../shared/nav_loader.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Profile</title>
+  <link rel="icon" type="image/png" href="../pictures/icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Montserrat+Alternates:ital,wght@0,400;0,500;0,600;0,700;0,800;1,600;1,700;1,800&family=Inter:wght@300;400;500;600&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="../customer.css">
+  <link rel="stylesheet" href="my_profile.css">
+</head>
+
+<body>
+
+  <header class="site-header">
+    <a class="brand" href="../../home_page/index.html" aria-label="Mithi home"><img src="../pictures/mithi-circlelogo 1.png"
+        alt=""><span>Mithi</span></a>
+
+    <form class="search" role="search" id="searchForm">
+      <div class="cat-wrap">
+        <button type="button" class="category-btn" id="categoryBtn" aria-haspopup="true" aria-expanded="false"
+          aria-controls="categoryMenu">
+          <svg class="grid-ico" viewBox="0 0 16 16" aria-hidden="true">
+            <g fill="currentColor">
+              <circle cx="3" cy="3" r="1.5" />
+              <circle cx="8" cy="3" r="1.5" />
+              <circle cx="13" cy="3" r="1.5" />
+              <circle cx="3" cy="8" r="1.5" />
+              <circle cx="8" cy="8" r="1.5" />
+              <circle cx="13" cy="8" r="1.5" />
+              <circle cx="3" cy="13" r="1.5" />
+              <circle cx="8" cy="13" r="1.5" />
+              <circle cx="13" cy="13" r="1.5" />
+            </g>
+          </svg><span class="lbl">Categories</span><span class="chev" aria-hidden="true">▾</span>
+        </button>
+        <div class="cat-menu" id="categoryMenu">
+          <div class="cat-pills" id="catActive">
+            <button type="button" class="cat-pill" data-cat="home" aria-pressed="false" title="Home"><img
+                class="cat-icon" src="../pictures/Home Stuff.png" alt="Home"><span class="cat-badge"
+                aria-hidden="true"></span></button>
+            <button type="button" class="cat-pill" data-cat="electronics" aria-pressed="false" title="Electronics"><img
+                class="cat-icon" src="../pictures/Tech Stuff.png" alt="Electronics"><span class="cat-badge"
+                aria-hidden="true"></span></button>
+            <button type="button" class="cat-pill" data-cat="jewelry" aria-pressed="false" title="Jewelry"><img
+                class="cat-icon" src="../pictures/Accessories.png" alt="Jewelry"><span class="cat-badge"
+                aria-hidden="true"></span></button>
+            <button type="button" class="cat-pill" data-cat="wellness" aria-pressed="false" title="Wellness"><img
+                class="cat-icon" src="../pictures/Wellness.png" alt="Wellness"><span class="cat-badge"
+                aria-hidden="true"></span></button>
+          </div>
+          <div class="cat-foot">
+            <button type="button" class="cat-edit" id="catEdit">Edit</button>
+            <div class="cat-editing"><span>Edit and sort</span><button type="button" class="cat-done" id="catDone"
+                aria-label="Done editing">✓</button></div>
+          </div>
+          <div class="cat-bin-wrap">
+            <div class="cat-bin-clip">
+              <div class="cat-bin" id="catBin" aria-label="Removed categories"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <input id="searchInput" type="search" placeholder="Search products" aria-label="Search products"
+        autocomplete="off">
+      <button type="submit" class="search-btn" aria-label="Search"><img src="../pictures/SearchButton.png" alt=""></button>
+    </form>
+
+    <div class="header-actions">
+      <a class="icon-btn cart-button" href="../../cart/order_summary_checkout/order_summary_checkout.html" aria-label="Cart"><img src="../pictures/Cart.svg" alt=""><span
+          id="cartCount" hidden>0</span></a>
+      <button type="button" class="icon-btn wish-btn" aria-label="Wishlist"><img src="../pictures/Wishlist.png"
+          alt=""></button>
+      <span class="username">Username</span>
+      <button type="button" class="avatar user-btn" aria-label="User account"><img src="../pictures/p.png" alt=""></button>
+    </div>
+  </header>
+
+  <nav class="main-nav" aria-label="Main">
+    <button type="button" class="nav-item" data-cat="2" data-target="topProductsSection">Regional Finds</button>
+    <button type="button" class="nav-item" data-cat="1" data-target="topProductsSection">New Arrivals</button>
+    <button type="button" class="nav-item" data-cat="0" data-target="topProductsSection">Top Products</button>
+    <button type="button" class="nav-item" data-target="flashSection">Vouchers</button>
+    <button type="button" class="nav-item" data-toast="Coupons coming soon">Coupons</button>
+    <button type="button" class="nav-item">Customer Service</button>
+    <!-- Location image placeholder: save your image as pictures/location.png and it will replace the orange pin -->
+    <button type="button" class="nav-seller" id="sellerBtn"><img class="loc" src="../pictures/location_icon.png"
+        alt=""><span class="vr" aria-hidden="true"></span><b>Sell Now!</b></button>
+  </nav>
+
+  <main id="page">
+    <div class="ds">
+      <nav class="crumbs" aria-label="Breadcrumb">
+        <a href="../../home_page/index.html">Home</a><span class="sep" aria-hidden="true">&gt;</span><a href="../customer.html">My Account</a><span class="sep" aria-hidden="true">&gt;</span><span aria-current="page">Settings</span>
+      </nav>
+      <h1 class="ds-title">My Profile</h1>
+      <div class="ds-wrap">
+        <form class="pf-card" id="pfForm" novalidate aria-label="My profile">
+          <div class="pf-head">
+            <button type="button" class="pf-pic" id="pfPic" aria-label="Change profile photo"><img class="pf-img" id="pfImg" src="../pictures/p.png" alt="Profile picture"><img class="cam" src="../pictures/camera.png" alt="" data-fb="1" onerror="this.hidden=true"></button>
+            <input type="file" id="pfPhoto" accept="image/*" hidden>
+            <div class="pf-who"><h2 id="pfName"></h2><p class="pf-handle" id="pfHandle"></p><p class="pf-uid">12345678912</p></div>
+          </div>
+          <div class="pf-grid">
+        <div class="pf-field"><div class="pf-lab"><label for="f-username">Your Username</label></div>
+          <div class="pf-input"><input id="f-username" type="text" autocomplete="off" maxlength="31"><img src="../pictures/user.png" alt=""></div><p class="pf-err" id="e-username" aria-live="polite"></p></div>
+        <div class="pf-field"><div class="pf-lab"><label for="f-id">Your ID</label><span class="pf-note">ID Cannot Edit</span></div>
+          <div class="pf-input ro"><input id="f-id" type="text" value="12345678912" readonly><img src="../pictures/passport_valid.png" alt=""></div></div>
+        <div class="pf-field"><div class="pf-lab"><label for="f-first">Your First Name</label></div>
+          <div class="pf-input"><input id="f-first" type="text" autocomplete="off" maxlength="40"><img src="../pictures/user_edit.png" alt=""></div><p class="pf-err" id="e-first" aria-live="polite"></p></div>
+        <div class="pf-field"><div class="pf-lab"><label for="f-last">Your Last Name</label></div>
+          <div class="pf-input"><input id="f-last" type="text" autocomplete="off" maxlength="40"><img src="../pictures/user_edit.png" alt=""></div><p class="pf-err" id="e-last" aria-live="polite"></p></div>
+        <div class="pf-field"><div class="pf-lab"><label for="f-email">Your Email</label><span class="pf-status" id="st-email"></span></div>
+          <div class="pf-input"><input id="f-email" type="email" autocomplete="off" inputmode="email"><img src="../pictures/email.png" alt=""></div><p class="pf-err" id="e-email" aria-live="polite"></p></div>
+        <div class="pf-field"><div class="pf-lab"><label for="f-phone">Your Phone Number</label><span class="pf-status" id="st-phone"></span></div>
+          <div class="pf-input"><input id="f-phone" type="tel" autocomplete="off" inputmode="tel" maxlength="16"><img src="../pictures/phone_hollow.png" alt=""></div><p class="pf-err" id="e-phone" aria-live="polite"></p></div>
+        <div class="pf-field"><div class="pf-lab"><label for="f-dob">Your Date of Birth</label></div>
+          <div class="pf-input pf-dob"><span class="pf-val" id="dobText" aria-hidden="true"></span><input id="f-dob" class="pf-date" type="date"><img src="../pictures/calendar.png" alt=""></div><p class="pf-err" id="e-dob" aria-live="polite"></p></div>
+        <div class="pf-field"><div class="pf-lab"><label for="f-address">Your Address</label></div>
+          <div class="pf-input"><input id="f-address" type="text" autocomplete="off" maxlength="120"><img src="../pictures/address_book.png" alt=""></div><p class="pf-err" id="e-address" aria-live="polite"></p></div>
+          </div>
+          <button type="submit" class="pf-save" id="pfSave">Save Changes</button>
+        </form>
+      </div>
+      <aside class="side-card" aria-label="Account menu">
+        <div class="side-user"><span class="su-pic"><img src="../pictures/p.png" alt=""></span><div><h2>Lolong Chi</h2><p class="su-handle">@thomas.norstein</p><p class="su-id">12345678912</p></div></div>
+        <div class="side-tabs" role="tablist">
+          <button type="button" role="tab" class="on" aria-selected="true">My Account</button>
+          <button type="button" role="tab" aria-selected="false">Billings</button>
+        </div>
+        <nav class="side-nav">
+          <button type="button" class="s-item" data-t="Home"><span class="ico" style="--i:url(../pictures/home.svg)" aria-hidden="true"></span>Home</button>
+          <button type="button" class="s-item" data-t="Delivery Status"><span class="ico" style="--i:url(../pictures/truck.svg)" aria-hidden="true"></span>Delivery Status</button>
+          <button type="button" class="s-item" data-t="Last viewed"><span class="ico" style="--i:url(../pictures/view.svg)" aria-hidden="true"></span>Last viewed</button>
+          <button type="button" class="s-item" data-t="Notification"><span class="ico" style="--i:url(../pictures/notif.svg)" aria-hidden="true"></span>Notification</button>
+          <div class="s-group">
+          <button type="button" class="s-item" data-t="Settings"><span class="ico" style="--i:url(../pictures/settings.svg)" aria-hidden="true"></span>Settings</button>
+          <ul class="sub">
+            <li><button type="button" class="on" data-t="My Profile">My Profile</button></li>
+            <li><button type="button" data-t="Change Password">Change Password</button></li>
+            <li><button type="button" data-t="Privacy Setting">Privacy Setting</button></li>
+            <li><button type="button" data-t="Language and Region">Language and Region</button></li>
+          </ul>
+          </div>
+          <div class="s-group">
+          <button type="button" class="s-item mgmt" data-t="Account Management"><span class="ico" style="--i:url(../pictures/account.svg)" aria-hidden="true"></span>Account Management</button>
+          <ul class="sub">
+            <li><button type="button" data-t="Switch Account">Switch Account</button></li>
+            <li><button type="button" data-t="Log Out">Log Out</button></li>
+            <li><button type="button" class="danger" data-t="Delete Account">Delete Account</button></li>
+          </ul>
+          </div>
+          <button type="button" class="s-item" data-t="Help"><span class="ico" style="--i:url(../pictures/help.svg)" aria-hidden="true"></span>Help</button>
+        </nav>
+      </aside>
+    </div>
+  </main>
+
+  <script src="../categories.js"></script>
+  <script src="../customer.js"></script>
+  <script src="my_profile.js"></script>
+</body>
+
+</html>

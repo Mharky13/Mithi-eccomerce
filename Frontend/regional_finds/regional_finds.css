@@ -1,0 +1,45 @@
+/* Regional Finds only. Navbar styles are in shared/nav_bar.css. */
+.rf-page { max-width: 1800px; margin: auto; padding: 24px 40px 56px; font-family: Montserrat, sans-serif; color: #4a5665; }
+.rf-hero { background: #f4e8d2; border-radius: 20px; padding: 25px; margin-bottom: 24px; }
+.rf-hero h1 { margin: 0 0 8px; font: 700 34px/1.2 'Montserrat Alternates', sans-serif; color: #df8d16; }
+.rf-hero h1::after { content: ''; display: block; width: 260px; max-width: 100%; height: 3px; background: #df8d16; margin-top: 7px; }
+.rf-hero p { margin: 0; font-size: 16px; }
+.rf-regions { background: white; border: 1px solid #e8dac3; border-radius: 18px; padding: 16px 19px 12px; margin-bottom: 28px; box-shadow: 0 5px 16px #5940170b; }
+.rf-regions h2, .rf-toolbar h2 { font-size: 18px; font-weight: 600; margin: 0 0 15px; }
+.rf-regions h2 { color: #70430d; }
+.rf-region-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 18px; align-items: stretch; }
+.rf-region { background: #f8f6f1; border-radius: 12px; padding: 0 14px; min-width: 0; }
+.rf-region summary { cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; padding: 14px 0; font-weight: 600; font-size: 16px; color: #70430d; }
+.rf-region summary::-webkit-details-marker { display: none; }
+.rf-region summary::after { content: '⌄'; color: #a35e00; font-size: 20px; line-height: 1; }
+.rf-region[open] summary::after { transform: rotate(180deg); }
+.rf-region button { display: block; width: 100%; text-align: left; padding: 10px 0; font-size: 12px; border-radius: 5px; }
+.rf-region button:hover, .rf-region button[aria-pressed="true"] { background: #f3e5cc; color: #70430d; }
+.rf-toolbar { display: flex; align-items: center; gap: 16px; justify-content: space-between; margin-bottom: 18px; flex-wrap: wrap; }
+.rf-toolbar h2 { margin: 0; margin-right: auto; }
+.rf-toolbar label { font-size: 13px; color: #687487; }
+.rf-toolbar select { border: 0; background: transparent; color: inherit; font: inherit; cursor: pointer; }
+#rfReset { color: #a35e00; text-decoration: underline; }
+.rf-grid { display: grid; grid-template-columns: repeat(5,minmax(0,1fr)); gap: 20px; }
+.rf-card { background: white; border: 1px solid #e8dac3; border-radius: 16px; overflow: hidden; display: flex; flex-direction: column; min-width: 0; transition: box-shadow .2s, transform .2s; }
+.rf-card:hover { transform: translateY(-3px); box-shadow: 0 8px 18px #59401715; }
+.rf-photo { position: relative; aspect-ratio: 1.5; }
+.rf-photo img { width: 100%; height: 100%; object-fit: cover; display: block; border-radius: 14px; }
+.rf-discount { position: absolute; top: 8px; left: 9px; background: #df8d16; color: white; border-radius: 12px; padding: 4px 12px; font-size: 15px; font-weight: 700; }
+.rf-wish { position: absolute; right: 9px; bottom: 9px; background: white; border-radius: 8px; width: 34px; height: 34px; color: #a35e00; font: 26px/1 Arial,sans-serif; }
+.rf-wish[aria-pressed="true"] { color: #df8d16; }
+.rf-info { padding: 12px 13px 14px; display: flex; flex-direction: column; flex: 1; min-height: 170px; }
+.rf-name { margin: 0 0 8px; font-size: 14px; font-weight: 500; line-height: 1.45; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.rf-stock { font-size: 11px; color: #687487; }
+.rf-stock.out { color: #b94235; }
+.rf-price { font-size: 23px; font-weight: 700; color: #df8d16; margin-top: 7px; letter-spacing: -.5px; }
+.rf-old { font-size: 11px; color: #687487; }
+.rf-rating { margin: auto 0 0; padding-top: 15px; font-size: 11px; color: #687487; }
+.rf-more { display: block; width: min(400px,100%); margin: 24px auto 0; background: white; border: 1px solid #e8dac3; border-radius: 10px; padding: 13px; font-weight: 600; }
+.rf-more:hover { background: #f4e8d2; }
+.rf-page [hidden] { display: none !important; }
+.rf-empty { grid-column: 1/-1; text-align: center; padding: 45px 15px; background: white; border-radius: 14px; }
+@media(min-width:901px) { .rf-page { zoom: 1.25; } }
+@media(max-width:1100px) { .rf-grid { grid-template-columns: repeat(4,minmax(0,1fr)); } }
+@media(max-width:900px) { .rf-page { padding: 20px; } .rf-grid { grid-template-columns: repeat(3,minmax(0,1fr)); } }
+@media(max-width:600px) { .rf-page { padding: 14px; } .rf-region-grid { grid-template-columns: 1fr; gap: 8px; } .rf-grid { grid-template-columns: repeat(2,minmax(0,1fr)); gap: 10px; } .rf-hero h1 { font-size: 25px; } .rf-hero p { font-size: 13px; } .rf-price { font-size: 18px; } .rf-info { padding: 10px; } }

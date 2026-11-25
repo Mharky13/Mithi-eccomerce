@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mithi - Proceed Payment</title>
+  <link rel="icon" type="image/png" href="images/icon.png">
+  <meta name="description" content="Review your cart items and proceed to payment on mithi.">
+  <meta name="theme-color" content="#f3eee3">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Montserrat+Alternates:ital,wght@0,400;0,500;0,600;0,700;0,800;1,600;1,700;1,800&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="proceed_payment.css">
+  <link rel="stylesheet" href="../../shared/nav_bar.css">
+</head>
+<body>
+  <div class="page">
+
+    <div id="navbar-container"></div>
+
+    <main class="page__main">
+
+      <section class="banner ">
+        <h1 class="banner__title">Bayad at Billing mo, Sis</h1>
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+          <ol class="breadcrumb__list">
+            <li><a class="breadcrumb__link" href="../../home_page/index.html">Home</a></li>
+            <li aria-hidden="true">/</li>
+            <li><a class="breadcrumb__link" href="../order_summary_checkout/order_summary_checkout.html">Shopping cart</a></li>
+            <li aria-hidden="true">/</li>
+            <li aria-current="page">Transaction &amp; Billing</li>
+          </ol>
+        </nav>
+      </section>
+
+      <div id="payment-alert" class="alert-wrap" inert aria-hidden="true">
+        <div class="alert-wrap__clip">
+          <section class="alert" role="alert">
+            <div>
+              <h2 class="alert__title">Payment Method &amp; Billing Validation Error</h2>
+              <p class="alert__text">
+                GCash e-Wallet authorization failed for Order #1136305766339804 (&#8369;60.00), and your Tax ID / Billing
+                Address requires verification before placing a new order.
+              </p>
+            </div>
+            <button type="button" id="retry-btn" class="alert__retry">Retry Payment</button>
+          </section>
+        </div>
+      </div>
+
+      <section class="cart " aria-labelledby="your-items">
+        <div class="cart__columns">
+          <h2 id="your-items" class="cart__heading">Your items</h2>
+          <span class="cart__column cart__column--qty">Quantity</span>
+          <span class="cart__column">Date to be delivered</span>
+          <span class="cart__column">Subtotal</span>
+        </div>
+        <h2 class="cart__heading cart__heading--mobile" aria-hidden="true">Your items</h2>
+
+        <ul class="cart__list">
+
+          <li class="cart-item " data-price="5">
+            <div class="cart-item__product">
+              <div class="cart-item__media">
+                <img class="cart-item__img" src="images/action-figure.png" alt="Action Figure (Limited Edition)" width="106" height="106">
+              </div>
+              <div class="cart-item__info">
+                <h3 class="cart-item__name">Action Figure (Limited Edition)</h3>
+                <p class="cart-item__store">Store Name</p>
+                <p class="cart-item__price">&#8369;5.00</p>
+              </div>
+            </div>
+            <div>
+              <div class="qty">
+                <button type="button" class="qty__btn" data-qty-change="-1" aria-label="Decrease quantity of Action Figure (Limited Edition)">&ndash;</button>
+                <span class="qty__value" aria-live="polite">1</span>
+                <button type="button" class="qty__btn" data-qty-change="1" aria-label="Increase quantity of Action Figure (Limited Edition)">+</button>
+              </div>
+            </div>
+            <p class="cart-item__delivery">Guaranteed by 16&ndash;19 Nov</p>
+            <p class="cart-item__subtotal"><span class="sr-only">Subtotal: </span><span class="cart-item__subtotal-value">&#8369;5.00</span></p>
+          </li>
+
+          <li class="cart-item cart-item--unavailable " data-price="5">
+            <div class="cart-item__product">
+              <div class="cart-item__media">
+                <img class="cart-item__img" src="images/action-figure.png" alt="Action Figure (Limited Edition)" width="106" height="106">
+              </div>
+              <div class="cart-item__info">
+                <h3 class="cart-item__name">Action Figure (Limited Edition)</h3>
+                <p class="cart-item__store">Store Name</p>
+                <p class="cart-item__price">&#8369;5.00</p>
+              </div>
+            </div>
+            <div>
+              <span class="badge-unavailable">Unavailable</span>
+            </div>
+            <p class="cart-item__delivery"></p>
+            <p class="cart-item__subtotal"><span class="sr-only">Subtotal: </span><span class="cart-item__subtotal-value">&#8369;0.00</span></p>
+          </li>
+
+          <li class="cart-item " data-price="5">
+            <div class="cart-item__product">
+              <div class="cart-item__media">
+                <img class="cart-item__img" src="images/action-figure.png" alt="Action Figure (Limited Edition)" width="106" height="106">
+                <span class="cart-item__badge">20% OFF</span>
+              </div>
+              <div class="cart-item__info">
+                <h3 class="cart-item__name">Action Figure (Limited Edition)</h3>
+                <p class="cart-item__store">Store Name</p>
+                <p class="cart-item__price">&#8369;5.00</p>
+              </div>
+            </div>
+            <div>
+              <div class="qty">
+                <button type="button" class="qty__btn" data-qty-change="-1" aria-label="Decrease quantity of Action Figure (Limited Edition)">&ndash;</button>
+                <span class="qty__value" aria-live="polite">1</span>
+                <button type="button" class="qty__btn" data-qty-change="1" aria-label="Increase quantity of Action Figure (Limited Edition)">+</button>
+              </div>
+            </div>
+            <p class="cart-item__delivery">Guaranteed by 16&ndash;19 Nov</p>
+            <p class="cart-item__subtotal"><span class="sr-only">Subtotal: </span><span class="cart-item__subtotal-value">&#8369;5.00</span></p>
+          </li>
+
+        </ul>
+
+        <div class="cart__footer ">
+          <p class="cart__region">Region: Zambales &nbsp;- Zambales Store</p>
+          <button type="button" id="proceed-btn" class="cart__proceed">Proceed to Payment</button>
+        </div>
+      </section>
+
+      <section class="delivery-address">
+
+        <!-- Delivery Address -->
+        <section class="delivery-address">
+          <h2 class="delivery-address__title">Delivery Address</h2>
+
+          <form id="address-form">
+            <div class="delivery-address__fields">
+
+              <!-- Full Name -->
+              <div class="address-field">
+                <label for="full-name">Full Name</label>
+                <input type="text" id="full-name"
+                  placeholder="Enter full name"
+                  minlength="2" required>
+              </div>
+
+              <!-- Phone Number -->
+              <div class="address-field">
+                <label for="phone-number">Phone Number</label>
+                <input type="tel" id="phone-number"
+                  placeholder="09XXXXXXXXX"
+                  pattern="09[0-9]{9}"
+                  maxlength="11"
+                  title="Enter a valid 11-digit Philippine mobile number"
+                  required>
+              </div>
+
+              <!-- Region -->
+              <div class="address-field">
+                <label for="region">Region</label>
+                <select id="region" required>
+                  <option value="">Select Region</option>
+                </select>
+              </div>
+
+              <!-- Province -->
+              <div class="address-field">
+                <label for="province">Province</label>
+                <select id="province" required disabled>
+                  <option value="">Select Province</option>
+                </select>
+              </div>
+
+              <!-- City -->
+              <div class="address-field">
+                <label for="city">City / Municipality</label>
+                <select id="city" required disabled>
+                  <option value="">Select City / Municipality</option>
+                </select>
+              </div>
+
+              <!-- Barangay -->
+              <div class="address-field">
+                <label for="barangay">Barangay</label>
+                <select id="barangay" required disabled>
+                  <option value="">Select Barangay</option>
+                </select>
+              </div>
+
+              <!-- Postal Code -->
+              <div class="address-field">
+                <label for="postal-code">Postal Code</label>
+                <input type="text" id="postal-code"
+                  placeholder="Enter postal code"
+                  inputmode="numeric"
+                  pattern="[0-9]{4}"
+                  maxlength="4"
+                  required>
+              </div>
+
+              <!-- Street Address -->
+              <div class="address-field address-field--full">
+                <label for="street-address">
+                  Street Name, Building, House No.
+                </label>
+                <textarea id="street-address" rows="2"
+                  placeholder="Enter your complete street address"
+                  minlength="5" required></textarea>
+              </div>
+
+            </div>
+
+            <!-- Address Preferences -->
+            <div class="address-preferences">
+
+              <label class="default-address">
+                <input type="checkbox" id="default-address">
+                Set as Default Address
+              </label>
+
+              <div class="address-label">
+                <span>Label As:</span>
+
+                <label>
+                  <input type="radio" name="address-label" value="Home">
+                  Home
+                </label>
+
+                <label>
+                  <input type="radio" name="address-label" value="Work">
+                  Work
+                </label>
+              </div>
+
+            </div>
+          </form>
+        </section>
+
+      </section>
+
+    </main>
+  </div>
+
+  <script src="../../shared/nav_bar.js"></script>
+<script src="proceed_payment.js"></script>
+<script src="../../shared/nav_loader.js"></script>
+
+<!-- Philippine Address Selector -->
+<script src="../../shared/philippine_address.js"></script>
+
+</body>
+</html>
+</body>
+</html>

@@ -1,0 +1,674 @@
+                           /* ======================= PAGE: PAYMENT METHOD ======================= */
+/* Header, categories dropdown, main nav and toast come from the shared section above. */
+:root { --ui: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif; }
+
+body { background: #f3efe3; }
+
+/* A display:flex rule must never beat the [hidden] attribute (promo / voucher rows) */
+[hidden] { display: none !important; }
+
+/* Small "M" logo badge (used by the "Tara na, Sis!" tag) */
+.brand-mark {
+  width: 30px; height: 30px; border-radius: 50%;
+  background: var(--orange); color: #fff;
+  display: grid; place-items: center;
+  font: 800 15px/1 var(--head); flex: none;
+}
+.brand-mark.sm { width: 24px; height: 24px; font-size: 12px; }
+
+/* ---------- Page shell ---------- */
+.billing-page {
+  --gutter: clamp(14px, 2.8vw, 40px);
+  /* side padding that keeps content inside a 1920px column on very wide screens */
+  --pad: max(var(--gutter), calc((100% - 1920px) / 2 + var(--gutter)));
+  margin: 0 auto;
+  padding: 0 0 64px;
+  font-family: var(--ui);
+  color: #3d536b;
+  display: flex;
+  flex-direction: column;
+}
+/* The shared stylesheet zooms the whole site to 80% on desktop (header + nav keep that).
+   The page content is zoomed a further 0.9375 so it ends up at 75% overall:
+   0.8 × 0.9375 = 0.75. Mobile has no zoom. */
+@media (min-width: 901px) {
+  .billing-page { zoom: .9375; }
+}
+
+/* ---------- Preview tabs (prototype helper) sit quietly under the page ---------- */
+.screen-switcher {
+  order: 99;
+  display: flex; flex-wrap: wrap; align-items: center; gap: 8px;
+  margin-top: 48px; padding-top: 18px;
+  border-top: 1px dashed #d9cfba;
+}
+.screen-switcher::before {
+  content: "Preview screens";
+  flex: 0 0 100%;
+  font: 600 11px/1 var(--ui);
+  letter-spacing: .08em; text-transform: uppercase;
+  color: #a39a87;
+}
+.screen-tab {
+  padding: 7px 14px; border-radius: 999px;
+  font: 600 12px/1.2 var(--ui);
+  color: var(--slate);
+  background: #fffaf0; border: 1px solid #e6d8be;
+  transition: all .2s var(--ease);
+}
+.screen-tab:hover { border-color: var(--orange); color: var(--orange); }
+.screen-tab.is-active { background: var(--orange); border-color: var(--orange); color: #fff; }
+
+/* =========================================================
+   SCREEN 1: Bayad at Billing mo, Sis
+   ========================================================= */
+.hero-banner {
+  background: #f5e9d8;
+  border-radius: 18px;
+  padding: 24px 24px 22px;
+  margin: 13px 0 24px;
+}
+
+.page-heading {
+  position: relative;
+  display: block;
+  width: fit-content;
+  max-width: 100%;
+  margin: 0 0 13px;
+  padding-bottom: 7px;
+  font: 700 clamp(24px, 2.4vw, 34px)/1.2 var(--head);
+  color: var(--orange);
+}
+/* the design underlines only the first part of the heading */
+.page-heading::after {
+  content: "";
+  position: absolute; left: 0; bottom: 0;
+  width: 66%; height: 3.5px;
+  border-radius: 2px;
+  background: var(--orange);
+}
+
+.breadcrumb {
+  display: flex; align-items: center; flex-wrap: wrap;
+  gap: 8px;
+  font: 400 16px/1.5 var(--ui);
+  color: #565f6b;
+}
+.breadcrumb a { text-decoration: none; color: inherit; }
+.breadcrumb a:hover { color: var(--orange); }
+.breadcrumb a.current { font-weight: 500; color: var(--slate); }
+
+.payment-split {
+  display: grid;
+  grid-template-columns: minmax(0, 2.21fr) minmax(0, 1fr);
+  gap: 24px;
+  align-items: start;
+}
+
+.billing-card {
+  background: #fffefb;
+  border: 1px solid #ece6da;
+  border-radius: 20px;
+  box-shadow: 0 2px 8px rgba(74, 86, 101, .04);
+}
+
+/* ---------- Order details ---------- */
+.order-details-card { padding: 16px 32px 48px 24px; }
+
+.section-title {
+  margin: 0 0 13px;
+  font: 700 19px/1.25 var(--ui);
+  color: var(--slate);
+}
+
+.voucher-form {
+  display: flex; align-items: center;
+  gap: 12px;
+  margin-bottom: 22px;
+}
+.voucher-input {
+  flex: 0 1 400px;
+  min-width: 0;
+  height: 45px;
+  border: 0;
+  border-radius: 14px;
+  background: #f8f7f4;
+  padding: 0 18px;
+  font: 500 18px/1 var(--ui);
+  color: var(--slate);
+}
+.voucher-input::placeholder { color: #9b9b9b; font-weight: 600; }
+.voucher-input:focus-visible { outline: 2px solid var(--orange); outline-offset: 1px; }
+
+.btn-voucher-enter {
+  flex: none;
+  height: 45px;
+  padding: 0 21px;
+  border-radius: 14px;
+  background: var(--orange);
+  color: #fff;
+  font: 600 18px/1 var(--ui);
+  transition: background-color .2s var(--ease), transform .2s var(--ease);
+}
+.btn-voucher-enter:hover { background: var(--orange-d); }
+.btn-voucher-enter:active { transform: scale(.97); }
+
+.summary-list { margin: 0; padding: 0 52px 0 12px; }
+.summary-line {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 12px;
+  font: 400 18px/28px var(--ui);
+  color: var(--slate);
+}
+.summary-line dt { font-weight: 400; }
+.summary-line dd { margin: 0; font-weight: 700; color: #8a8c8f; white-space: nowrap; }
+.val-orange { color: var(--orange) !important; font-weight: 700 !important; }
+
+.summary-divider { border: 0; border-top: 2px solid var(--slate); margin: 16px 0 14px; }
+
+.summary-total-row {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 16px;
+  padding: 0 52px 0 12px;
+  margin-bottom: 54px;
+}
+.summary-total-label { font: 700 18px/1.2 var(--ui); color: var(--slate); }
+.summary-total-amount { font: 700 32px/1.1 var(--head); color: var(--orange); white-space: nowrap; }
+
+.contact-box {
+  background: #f9f8f4;
+  border-radius: 16px;
+  padding: 22px 24px 30px;
+  margin: 0 23px 30px 9px;
+}
+.contact-heading { font: 700 18px/1.3 var(--ui); color: var(--slate); margin-bottom: 12px; }
+.contact-phone { font: 400 18px/1.4 var(--ui); color: var(--slate); }
+
+.billing-cta-row {
+  display: flex; align-items: center; flex-wrap: wrap;
+  gap: 12px;
+  margin-left: 9px;
+}
+.btn-place-order {
+  height: 52px;
+  padding: 0 36px;
+  border-radius: 999px;
+  background: var(--orange);
+  color: #fff;
+  font: 600 18px/1 var(--ui);
+  box-shadow: 0 5px 12px rgba(223, 141, 22, .25);
+  transition: background-color .2s var(--ease), transform .2s var(--ease);
+}
+.btn-place-order:hover { background: var(--orange-d); transform: translateY(-1px); }
+.btn-place-order:active { transform: scale(.97); }
+
+.btn-sim-fail {
+  font: 500 12px/1 var(--ui);
+  color: #a2a9b0;
+  padding: 10px 12px;
+  border-radius: 999px;
+}
+.btn-sim-fail:hover { color: #c74b4b; background: #fdf1f0; }
+
+/* ---------- Payment methods ---------- */
+.payment-methods-card { padding: 28px 24px 40px; min-height: 430px; }
+.payment-methods-card .section-title { margin: 0 0 6px; font-size: 24px; }
+
+.payment-sub { margin: 0 0 22px; font: 400 14px/1.4 var(--ui); color: #3d4a58; }
+
+.payment-options { display: flex; flex-direction: column; gap: 20px; }
+
+.payment-option {
+  width: 100%; min-height: 68px;
+  display: flex; align-items: center; gap: 22px;
+  padding: 0 18px;
+  text-align: left;
+  background: #fffefb;
+  border: 1px solid #ece6da;
+  border-radius: 12px;
+  transition: background-color .2s var(--ease), border-color .2s var(--ease), transform .2s var(--ease);
+}
+.payment-option:hover { border-color: #dfb06a; }
+.payment-option:active { transform: scale(.99); }
+.payment-option.is-selected { background: #f5e9d8; border-color: var(--orange); }
+
+.method-radio {
+  flex: none;
+  width: 16px; height: 16px;
+  border-radius: 50%;
+  border: 2px solid #b8741a;
+  background: transparent;
+}
+.payment-option.is-selected .method-radio { background: #a85d00; border-color: #a85d00; }
+
+.method-name { font: 500 18px/1.2 var(--ui); color: var(--slate); }
+
+.payment-footnote { margin: 48px 0 0; font: 400 14px/1.4 var(--ui); color: #3d4a58; }
+
+/* =========================================================
+   SCREEN 2: Let's try that payment again
+   ========================================================= */
+.hero-plain {
+  padding: 6px 4px 20px;
+}
+
+.failed-split {
+  grid-template-columns: minmax(0, 1.85fr) minmax(290px, 0.95fr);
+}
+
+.failed-main-card {
+  padding: 40px 44px 48px;
+}
+
+.warning-badge {
+  width: 68px;
+  height: 68px;
+  border-radius: 50%;
+  background: #f9ebe9;
+  display: grid;
+  place-items: center;
+  margin-bottom: 28px;
+}
+
+.failed-title {
+  margin: 0 0 14px;
+  font: 700 clamp(20px, 2.3vw, 25px)/1.25 var(--head);
+  color: #963232;
+}
+
+.failed-desc {
+  margin: 0 0 24px;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #55606b;
+}
+
+.failed-support {
+  margin: 0 0 34px;
+  font-size: 11.5px;
+  color: #7c8690;
+}
+
+.failed-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.btn-retry-full {
+  width: 100%;
+  height: 44px;
+  border-radius: 999px;
+  background: #e15753;
+  color: #fff;
+  font: 700 13px/1 var(--ui);
+  box-shadow: 0 4px 12px rgba(225, 87, 83, .28);
+  transition: background-color .2s var(--ease), transform .2s var(--ease);
+}
+
+.btn-retry-full:hover {
+  background: #cf4642;
+  transform: translateY(-1px);
+}
+
+.btn-alt-method {
+  width: 100%;
+  height: 44px;
+  border-radius: 999px;
+  background: #fff;
+  color: var(--slate);
+  border: 1.5px solid #e7e1d6;
+  font: 700 13px/1 var(--ui);
+  transition: border-color .2s var(--ease), background-color .2s var(--ease);
+}
+
+.btn-alt-method:hover {
+  border-color: var(--orange);
+  background: #fffcf6;
+}
+
+/* Right Order Summary Card on Failed Screen */
+.summary-side-card {
+  overflow: hidden;
+}
+
+.summary-card-header {
+  background: var(--orange);
+  color: #fff;
+  padding: 18px 22px;
+}
+
+.summary-card-header h2 {
+  margin: 0 0 4px;
+  font: 700 18px/1.2 var(--head);
+}
+
+.summary-card-header p {
+  margin: 0;
+  font-size: 10.5px;
+  opacity: .92;
+}
+
+.summary-card-body {
+  padding: 20px 22px 24px;
+}
+
+.voucher-form.compact {
+  gap: 8px;
+  margin-bottom: 14px;
+}
+
+.voucher-form.compact .voucher-input {
+  height: 38px;
+  font-size: 12px;
+  border: 1px solid #ece7de;
+  background: #fbfaf8;
+}
+
+.voucher-form.compact .btn-voucher-enter {
+  height: 38px;
+  padding: 0 18px;
+  border-radius: 999px;
+  font-size: 12px;
+}
+
+.summary-select-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 12.5px;
+  color: #5b6570;
+  margin-bottom: 16px;
+}
+
+.btn-select-pill {
+  padding: 6px 24px;
+  border-radius: 999px;
+  border: 1px solid #e5dfd4;
+  background: #fff;
+  font: 700 11.5px/1 var(--ui);
+  color: var(--slate);
+}
+
+.btn-select-pill:hover {
+  border-color: var(--orange);
+  color: var(--orange);
+}
+
+.summary-card-body .summary-line {
+  font-size: 12.5px;
+  margin-bottom: 10px;
+}
+
+.muted-note {
+  font-size: 11px;
+  color: #7c858e;
+}
+
+.orange-divider {
+  border: 0;
+  border-top: 1.5px solid #e3a74f;
+  margin: 14px 0;
+}
+
+.summary-total-row.compact {
+  padding: 0;
+  margin-bottom: 18px;
+  align-items: center;
+}
+
+.estimated-total-val {
+  font: 800 24px/1.1 var(--head);
+  color: var(--orange);
+}
+
+.btn-review-order {
+  width: 100%;
+  height: 44px;
+  border-radius: 999px;
+  background: var(--orange);
+  color: #fff;
+  font: 700 13px/1 var(--ui);
+  margin-bottom: 14px;
+  transition: background-color .2s var(--ease);
+}
+
+.btn-review-order:hover {
+  background: var(--orange-d);
+}
+
+.summary-fineprint {
+  margin: 0 0 14px;
+  font-size: 10.5px;
+  line-height: 1.45;
+  color: #7c858e;
+}
+
+.tara-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font: 700 12.5px/1 var(--head);
+  color: var(--orange);
+}
+
+/* =========================================================
+   SCREEN 3: Salamat, Sis. Your order is confirmed!
+   ========================================================= */
+.confirmed-card {
+  max-width: 720px;
+  margin: 14px auto 0;
+  padding: 44px clamp(22px, 5vw, 60px) 48px;
+  text-align: center;
+}
+
+.confirm-check-circle {
+  width: 74px;
+  height: 74px;
+  border-radius: 50%;
+  background: #f5ebd9;
+  display: grid;
+  place-items: center;
+  margin: 0 auto 24px;
+}
+
+.confirm-heading {
+  margin: 0 0 14px;
+  font: 800 clamp(22px, 2.8vw, 28px)/1.25 var(--head);
+  color: #a4640f;
+}
+
+.underline-accent {
+  display: inline-block;
+  padding-bottom: 5px;
+  border-bottom: 3px solid #e6a94e;
+}
+
+.confirm-sub {
+  margin: 0 auto 28px;
+  font-size: 13.5px;
+  line-height: 1.6;
+  color: #5c6672;
+}
+
+.confirm-summary-pill {
+  background: #faf6ef;
+  border-radius: 14px;
+  padding: 18px 26px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 22px;
+  font-size: 13.5px;
+  font-weight: 500;
+  color: #4f5863;
+}
+
+.confirm-price {
+  font: 800 22px/1 var(--head);
+  color: var(--orange);
+}
+
+.progress-steps {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+  margin-bottom: 28px;
+}
+
+.step-box {
+  background: #fbf9f5;
+  border-radius: 12px;
+  padding: 16px 14px;
+  text-align: left;
+  font-size: 11.5px;
+  color: #6b747e;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.step-box.is-active {
+  background: #f5ebd9;
+  color: #8f560c;
+  font-weight: 700;
+}
+
+.step-num {
+  font-weight: 700;
+}
+
+.confirm-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.btn-view-orders {
+  width: 100%;
+  height: 44px;
+  border-radius: 999px;
+  background: var(--orange);
+  color: #fff;
+  font: 700 13px/1 var(--ui);
+  transition: background-color .2s var(--ease);
+}
+
+.btn-view-orders:hover {
+  background: var(--orange-d);
+}
+
+.btn-keep-exploring {
+  width: 100%;
+  height: 44px;
+  border-radius: 999px;
+  background: #fff;
+  color: var(--slate);
+  border: 1.5px solid #e7e1d6;
+  font: 700 13px/1 var(--ui);
+  transition: border-color .2s var(--ease), background-color .2s var(--ease);
+}
+
+.btn-keep-exploring:hover {
+  border-color: var(--orange);
+  background: #fffcf6;
+}
+
+
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+@media (max-width: 900px) {
+  .billing-page { --gutter: 14px; padding: 0 0 48px; }
+
+  .payment-split,
+  .failed-split { grid-template-columns: minmax(0, 1fr); gap: 16px; }
+
+  /* choose the method first, then review the total and place the order */
+  .payment-methods-card { order: -1; min-height: 0; padding: 22px 20px 24px; }
+  .payment-footnote { margin-top: 20px; }
+
+  .hero-banner { padding: 18px 18px 16px; margin-top: 12px; margin-bottom: 16px; }
+
+  .order-details-card { padding: 22px 20px 26px; }
+  .summary-list,
+  .summary-total-row { padding: 0; }
+  .summary-total-row { margin-bottom: 24px; }
+  .contact-box { margin: 0 0 22px; padding: 18px 20px 20px; }
+  .billing-cta-row { margin-left: 0; }
+
+  .failed-main-card { padding: 28px 22px 30px; }
+  .failed-split .summary-side-card { order: 2; }
+}
+
+@media (max-width: 640px) {
+  .page-heading { font-size: 24px; }
+  .breadcrumb { font-size: 13px; gap: 6px; }
+
+  .section-title { font-size: 18px; }
+  .payment-methods-card .section-title { font-size: 20px; }
+
+  /* 16px inputs stop iOS from zooming the page on focus */
+  .voucher-input { font-size: 16px; }
+  .voucher-input { flex: 1 1 auto; height: 46px; }
+  .btn-voucher-enter { height: 46px; font-size: 16px; }
+
+  .summary-line { font-size: 15px; line-height: 22px; margin-bottom: 10px; }
+  .summary-total-label { font-size: 16px; }
+  .summary-total-amount { font-size: 26px; }
+  .contact-heading,
+  .contact-phone { font-size: 15px; }
+
+  .billing-cta-row { flex-direction: column; align-items: stretch; gap: 6px; }
+  .btn-place-order { width: 100%; height: 52px; font-size: 16px; }
+  .btn-sim-fail { align-self: center; }
+
+  .payment-option { min-height: 60px; gap: 16px; }
+  .method-name { font-size: 16px; }
+
+  /* failed screen */
+  .hero-plain { padding: 4px 2px 14px; }
+  .warning-badge { width: 56px; height: 56px; margin-bottom: 20px; }
+  .failed-title { font-size: 20px; }
+  .failed-desc { font-size: 14px; margin-bottom: 16px; }
+  .failed-support { margin-bottom: 24px; }
+  .summary-card-body { padding: 18px 18px 22px; }
+  .voucher-form.compact .voucher-input { height: 42px; }
+  .voucher-form.compact .btn-voucher-enter { height: 42px; }
+  .estimated-total-val { font-size: 22px; }
+
+  /* confirmed screen */
+  .confirmed-card { margin-top: 4px; padding: 32px 18px 28px; }
+  .confirm-check-circle { width: 62px; height: 62px; margin-bottom: 18px; }
+  .confirm-heading { font-size: 22px; }
+  .confirm-sub { font-size: 13px; margin-bottom: 20px; }
+  .confirm-summary-pill { padding: 14px 18px; }
+  .confirm-price { font-size: 20px; }
+  .progress-steps { grid-template-columns: 1fr; gap: 8px; margin-bottom: 22px; }
+  .step-box { padding: 13px 14px; font-size: 13px; }
+
+  .screen-switcher { margin-top: 32px; }
+
+  /* toast spans the bottom edge instead of clipping on the right */
+  .toast { left: 12px; right: 12px; bottom: 14px; text-align: center; border-radius: 14px; }
+}
+
+@media (max-width: 400px) {
+  .billing-card { border-radius: 16px; }
+  .order-details-card { padding: 20px 16px 22px; }
+  .voucher-form { gap: 8px; }
+  .btn-voucher-enter { padding: 0 16px; }
+}
+
+/* =========================================================
+   EDGE-TO-EDGE LAYOUT: the hero banner spans the full width,
+   everything else keeps the side gutter
+   ========================================================= */
+.hero-banner { margin-inline: var(--pad); }
+.hero-plain,
+.payment-split,
+.screen-switcher { padding-inline: var(--pad); }
+.confirmed-card { width: calc(100% - 2 * var(--gutter)); }
+

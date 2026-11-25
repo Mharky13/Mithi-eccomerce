@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="#3d4d66" name="theme-color"/>
+<meta content="light" name="color-scheme"/>
+<title>Admin Dashboard — Tara na, Sis!</title>
+<meta content="Admin dashboard for managing sellers, users, products, orders and refunds." name="description"/>
+<link href="images/mithi-logo.png" rel="icon"/>
+<link href="images/mithi-logo.png" rel="apple-touch-icon"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Montserrat:wght@600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="admin.css" rel="stylesheet"/>
+<script defer="" src="admin.js"></script>
+</head>
+<body>
+
+<div class="admin-layout" id="admin-view">
+<aside class="sidebar">
+<a class="sidebar-brand" href="admin_dashboard.html">
+<img alt="" class="brand-mark" height="80" src="images/mithi-logo.png" width="80"/>
+<span class="sidebar-brand-text">
+<span class="sidebar-brand-title">Admin</span>
+<span class="sidebar-brand-subtitle">Workspace</span>
+</span>
+</a>
+<nav aria-label="Management" class="sidebar-nav">
+<p class="sidebar-heading">Management</p>
+<ul class="sidebar-list">
+<li>
+<a aria-current="page" class="sidebar-link" href="admin_dashboard.html">
+<span class="sidebar-index">01</span>
+                Admin Dashboard
+              </a>
+</li>
+<li>
+<a class="sidebar-link" href="seller_application.html">
+<span class="sidebar-index">02</span>
+                Seller Application
+              </a>
+</li>
+<li>
+<a class="sidebar-link" href="AdminUserManagement.html">
+<span class="sidebar-index">03</span>
+                User Management
+              </a>
+</li>
+<li>
+<a class="sidebar-link" href="product_catalog.html">
+<span class="sidebar-index">04</span>
+                P/C Management
+              </a>
+</li>
+<li>
+<a class="sidebar-link" href="order_management.html">
+<span class="sidebar-index">05</span>
+                Order Management
+              </a>
+</li>
+<li>
+<a class="sidebar-link" href="complaint_management.html">
+<span class="sidebar-index">06</span> Complaint Management</a>
+</li><li>
+<a class="sidebar-link" href="refund_management.html"><span class="sidebar-index">07</span> Refund Management</a>
+</li>
+</ul>
+</nav>
+<div class="sidebar-footer">
+<span class="sidebar-footer-title">Tara na, Sis!</span>
+<a class="sidebar-logout" href="AdminAuth.html">
+<svg aria-hidden="true" class="icon icon-sm" viewbox="0 0 24 24"><path d="m16 17 5-5-5-5"></path><path d="M21 12H9"></path><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path></svg>
+            Log out
+          </a>
+</div>
+</aside>
+<div class="admin-content">
+<header class="topbar">
+<form action="#" class="topbar-search" role="search">
+<label class="sr-only" for="admin-search">Search</label>
+<svg aria-hidden="true" class="icon icon-sm" viewbox="0 0 24 24"><circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.3-4.3"></path></svg>
+<input id="admin-search" placeholder="Search" type="search"/>
+</form>
+<div class="topbar-actions">
+<button aria-label="Notifications" class="icon-button" type="button">
+<svg aria-hidden="true" class="icon" viewbox="0 0 24 24"><path d="M10.268 21a2 2 0 0 0 3.464 0"></path><path d="M3.262 15.326A1 1 0 0 0 4 17h16a1 1 0 0 0 .74-1.673C19.41 13.956 18 12.499 18 8A6 6 0 0 0 6 8c0 4.499-1.411 5.956-2.738 7.326"></path></svg>
+</button>
+<a class="topbar-user" href="AdminAuth.html" title="Log out">
+<span class="avatar">A</span>
+              Admin
+            </a>
+</div>
+</header>
+<main class="admin-main">
+<section class="admin-page" id="dashboard">
+<h1 class="page-title">Admin Dashboard</h1>
+<section class="error-panel" data-state="error" hidden="">
+<div class="error-panel-header">
+<span class="badge-error">Load failed</span>
+</div>
+<div class="error-panel-body">
+<div class="state-message" role="alert">
+<span aria-hidden="true" class="error-mark">!</span>
+<p class="error-title">We couldn't load your dashboard</p>
+<p class="state-description">Your admin workspace is temporarily unavailable. Try again, or use the navigation to open another page.</p>
+<div class="error-actions">
+<a class="button-primary" href="admin_dashboard.html">Try again</a>
+<a class="button-link" href="mailto:support@taranasis.com">Contact support</a>
+</div>
+</div>
+</div>
+<p class="footnote">Other admin pages may still be available from the sidebar.</p>
+</section>
+<div data-state="empty">
+<section class="hero">
+<p class="eyebrow">Your Admin Workspace</p>
+<h2 class="hero-title">Tara na, Sis!</h2>
+<p class="hero-text">Manage your marketplace, all in one place.</p>
+<div aria-hidden="true" class="hero-bar"></div>
+<div aria-hidden="true" class="hero-ring"></div>
+</section>
+<section aria-labelledby="management-title" class="section">
+<h2 class="section-title" id="management-title">Management</h2>
+<ul class="card-grid">
+<li>
+<a class="workspace-card" href="seller_application.html">
+<span class="workspace-index">01</span>
+<span class="workspace-title">Seller Application</span>
+<span class="workspace-open">
+                    Open workspace
+                    <svg aria-hidden="true" class="icon icon-sm" viewbox="0 0 24 24"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+</span>
+</a>
+</li>
+<li>
+<a class="workspace-card" href="AdminUserManagement.html">
+<span class="workspace-index">02</span>
+<span class="workspace-title">User Management</span>
+<span class="workspace-open">
+                    Open workspace
+                    <svg aria-hidden="true" class="icon icon-sm" viewbox="0 0 24 24"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+</span>
+</a>
+</li>
+<li>
+<a class="workspace-card" href="product_catalog.html">
+<span class="workspace-index">03</span>
+<span class="workspace-title">P/C Management</span>
+<span class="workspace-open">
+                    Open workspace
+                    <svg aria-hidden="true" class="icon icon-sm" viewbox="0 0 24 24"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+</span>
+</a>
+</li>
+<li>
+<a class="workspace-card" href="order_management.html">
+<span class="workspace-index">04</span>
+<span class="workspace-title">Order Management</span>
+<span class="workspace-open">
+                    Open workspace
+                    <svg aria-hidden="true" class="icon icon-sm" viewbox="0 0 24 24"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+</span>
+</a>
+</li>
+<li>
+<a class="workspace-card" href="complaint_management.html">
+<span class="workspace-index">05</span>
+<span class="workspace-title">Complaint Management</span>
+<span class="workspace-open">
+                    Open workspace
+                    <svg aria-hidden="true" class="icon icon-sm" viewbox="0 0 24 24"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+</span>
+</a>
+</li><li>
+<a class="workspace-card" href="refund_management.html">
+<span class="workspace-index">06</span>
+<span class="workspace-title">Refund Management</span>
+<span class="workspace-open">
+                    Open workspace
+                    <svg aria-hidden="true" class="icon icon-sm" viewbox="0 0 24 24"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+</span>
+</a>
+</li>
+</ul>
+</section>
+<p class="footnote dashboard-footnote">Admin workspace</p>
+</div>
+</section>
+
+
+
+
+
+</main>
+</div>
+</div>
+</body>
+</html>

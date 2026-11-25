@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Products · Mithi Seller Center</title>
+  <meta name="description" content="Sign in, set up your shop and manage your products and orders on Mithi Seller Center.">
+  <meta name="theme-color" content="#f3eee2">
+  <meta name="color-scheme" content="light">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="images/icon.png">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="seller.css">
+</head>
+<body class="seller-body" data-page="products" data-group="seller">
+
+  <div id="app-header" data-center="Store’s Name* Dashboard" data-home="seller_dashboard.html" data-fixed></div>
+  <div id="seller-sidebar" data-active="products"></div>
+
+  <div class="seller-content">
+    <main class="seller-main">
+      <section class="page-banner">
+        <div>
+          <h1>Product mo, Sis</h1>
+          <p>Your catalog, stock and product details in one place.</p>
+        </div>
+        <a class="btn-pill" href="seller_add_product.html">Add product</a>
+      </section>
+      <section class="panel p-3 toolbar">
+        <div class="filter-tabs" id="products-tabs" role="group" aria-label="Filter products">
+          <button type="button" class="filter-tab" data-value="All" aria-pressed="true">All products</button>
+          <button type="button" class="filter-tab" data-value="Active" aria-pressed="false">Active</button>
+          <button type="button" class="filter-tab" data-value="Draft" aria-pressed="false">Draft</button>
+        </div>
+        <label class="search-box">
+          <span data-icon="search"></span>
+          <span class="sr-only">Search product</span>
+          <input type="search" id="products-search" placeholder="Search product">
+        </label>
+      </section>
+
+      <section class="panel flex-col min-420">
+        <div class="table-scroll">
+          <table class="data-table min-820">
+            <thead>
+              <tr><th>SKU#</th><th>Product</th><th>Product description</th><th>Category</th><th>Price</th><th>Stock</th><th>Reorder Level</th><th>Reorder quantity</th><th>Status</th><th>Action</th></tr>
+            </thead>
+            <tbody id="products-body"></tbody>
+          </table>
+          <p class="table-empty" id="products-empty" hidden>No products match your search.</p>
+        </div>
+        <p class="table-count" id="products-count"></p>
+      </section>
+    </main>
+    <div id="seller-footer"></div>
+  </div>
+  
+  <script src="seller.js"></script>
+</body>
+</html>

@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <title>Mithi – Login</title>
+    <link rel="icon" type="image/png" href="pictures/icon.png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@400;500;600;700;800;900&family=Montserrat+Alternates:wght@900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="login.css">
+
+    <!-- login.js must load right after Tailwind: it holds tailwind.config -->
+    <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+    <script src="login.js"></script>
+</head>
+
+<body class="min-h-dvh flex items-center justify-center p-4 md:p-8">
+
+    <!-- Leaf icon sprite -->
+    <svg class="absolute w-0 h-0" aria-hidden="true">
+        <symbol id="leaf" viewBox="0 0 22 30">
+            <path d="M12 1C12 1 2 11 2 20a9 9 0 0018 0C20 11 12 1 12 1z" fill="currentColor" />
+        </symbol>
+    </svg>
+
+    <main id="authCard" data-mode="login"
+        class="relative w-full max-w-[75rem] grid gap-6 md:gap-8 lg:gap-12 md:grid-cols-[4fr_5fr] lg:grid-cols-2 bg-white rounded-[32px] border border-orange-100/60 shadow-card-glow p-4 md:p-8 lg:p-11">
+
+        <!-- Toast: top-center on mobile, top-right on desktop -->
+        <div id="toast" role="status" aria-live="polite"
+            class="hidden fixed z-50 inset-x-4 mx-auto max-w-sm top-[max(1rem,env(safe-area-inset-top))] md:inset-x-auto md:mx-0 md:right-8 md:w-96 items-center justify-between gap-3 px-4 py-3 rounded-xl bg-mithi-toast text-white shadow-xl shadow-orange-500/25 font-inter">
+            <div class="flex items-center gap-3 min-w-0">
+                <span id="toast-icon" aria-hidden="true"></span>
+                <p id="toast-message" class="text-sm font-semibold break-words"></p>
+            </div>
+            <button id="toast-close" type="button" aria-label="Dismiss notification"
+                class="shrink-0 w-11 h-11 -mr-2 grid place-items-center text-white/85 hover:text-white">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+
+        <!-- LEFT: banner -->
+        <section class="banner relative min-h-[220px] md:min-h-[35rem] lg:min-h-[43.75rem]">
+            <!-- Background details (clipped to the rounded banner), all behind the illustrations -->
+            <div class="banner-surface absolute inset-0 rounded-3xl overflow-hidden" aria-hidden="true">
+                <img src="pictures/banner-vine-top.png" alt="" class="absolute inset-0 w-full h-full object-cover">
+                <img src="pictures/banner-vine-bottom.png" alt="" class="absolute inset-x-0 bottom-0 w-full h-auto">
+                <img src="pictures/banner-shadow.png" alt=""
+                    class="banner-shadow absolute bottom-0 left-1/2 -translate-x-1/2 w-[60%] md:bottom-[-1%] md:w-[80%] brightness-[0.8]">
+            </div>
+
+            <div class="brand-block relative z-20 p-5 md:p-9 flex flex-col items-start w-fit max-w-full mx-auto">
+                <p class="brand-wordmark" aria-label="Mithi">Mithi</p>
+                <p class="brand-tagline mt-2 flex items-center gap-1.5">Tara na, Sis!</p>
+            </div>
+
+            <!-- Illustrations crossfade by data-mode; they spill past the banner on desktop -->
+            <img src="pictures/mithi-logov4.png" alt="Mithi tarsier hugging a shopping bag"
+                class="banner-art banner-art--login absolute z-10 h-auto max-w-none drop-shadow-xl left-1/2 -translate-x-1/2 bottom-0 w-[58%] md:translate-x-0 md:left-[-4%] md:bottom-[3%] md:w-[122%]">
+            <img src="pictures/mithi-tarsier.png" alt="" aria-hidden="true"
+                class="banner-art banner-art--signup absolute z-10 h-auto max-w-none drop-shadow-xl left-1/2 -translate-x-1/2 bottom-0 w-[44%] md:translate-x-0 md:left-[-6%] md:w-[110%]">
+        </section>
+
+        <!-- RIGHT: forms -->
+        <section class="flex flex-col justify-center md:px-1 lg:px-6 py-2">
+
+            <!-- LOGIN -->
+            <div id="loginSection" data-mode-panel="login">
+                <h1 tabindex="-1"
+                    class="text-[1.75rem] md:text-[2.5rem] font-extrabold text-mithi-ink tracking-tight flex items-center gap-3">
+                    Login na, Sis!<img src="pictures/LEAF-COLORED.png">
+                </h1>
+                <p class="mt-2 mb-6 text-sm text-gray-500 leading-relaxed">
+                    Welcome back! We are thrilled to see you again and help you pick up right where you left off.
+                </p>
+
+                <form id="loginForm" class="space-y-4" novalidate>
+                    <div class="space-y-1.5">
+                        <label for="email" class="block text-sm font-bold text-mithi-ink">Your Email or Username</label>
+                        <div class="relative" data-field>
+                            <input type="text" id="email" name="email" required autocomplete="username"
+                                placeholder="name@example.com or username" class="custom-input">
+                        </div>
+                    </div>
+
+                    <div class="space-y-1.5">
+                        <label for="password" class="block text-sm font-bold text-mithi-ink">Your Password</label>
+                        <div class="relative has-toggle" data-field>
+                            <input type="password" id="password" name="password" required
+                                autocomplete="current-password" class="custom-input">
+                            <button type="button" class="pw-toggle" data-toggle-password="password"
+                                aria-label="Show password" aria-pressed="false">
+                                <i class="far fa-eye"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-wrap items-center justify-between gap-x-4 text-xs">
+                        <a href="#forgot" data-forgot-password
+                            class="inline-flex items-center min-h-[44px] text-mithi-ink underline font-medium hover:text-orange-600">Forgot
+                            your Password?</a>
+                        <label
+                            class="inline-flex items-center gap-2 min-h-[44px] cursor-pointer select-none text-gray-600 font-medium">
+                            <input type="checkbox" id="remember" class="check"> Remember me?
+                        </label>
+                    </div>
+
+                    <button type="submit" id="submitBtn" class="btn-primary">
+                        <span id="btnText">Login</span>
+                        <i id="btnSpinner" class="fas fa-spinner fa-spin ml-2 hidden" aria-hidden="true"></i>
+                    </button>
+                </form>
+            </div>
+
+            <!-- SIGN UP -->
+            <div id="signupSection" data-mode-panel="signup" class="hidden">
+                <h1 tabindex="-1"
+                    class="text-[1.75rem] md:text-[2.5rem] font-extrabold text-mithi-ink tracking-tight flex items-center gap-3">
+                    Sign up na, Sis! <img src="pictures/LEAF-COLORED.png">
+                </h1>
+                <p class="mt-2 mb-5 text-sm text-gray-500 leading-relaxed">
+                    Welcome to our community! Explore collections and enjoy effortless shopping!
+                </p>
+
+                <form id="signupForm" class="space-y-3.5" novalidate>
+                    <div class="grid grid-cols-[repeat(auto-fit,minmax(9.5rem,1fr))] gap-3">
+                        <div class="space-y-1.5">
+                            <label for="firstName" class="block text-sm font-bold text-mithi-ink">Your First
+                                Name</label>
+                            <div class="relative" data-field>
+                                <input type="text" id="firstName" name="firstName" required autocomplete="given-name"
+                                    placeholder="Juan" class="custom-input">
+                            </div>
+                        </div>
+                        <div class="space-y-1.5">
+                            <label for="lastName" class="block text-sm font-bold text-mithi-ink">Your Last Name</label>
+                            <div class="relative" data-field>
+                                <input type="text" id="lastName" name="lastName" required autocomplete="family-name"
+                                    placeholder="Dela Cruz" class="custom-input">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="space-y-1.5">
+                        <label for="signupEmail" class="block text-sm font-bold text-mithi-ink">Your Email</label>
+                        <div class="relative" data-field>
+                            <input type="email" id="signupEmail" name="signupEmail" required autocomplete="email"
+                                inputmode="email" placeholder="name@example.com" class="custom-input">
+                        </div>
+                    </div>
+
+                    <div class="space-y-1.5">
+                        <label for="signupPassword" class="block text-sm font-bold text-mithi-ink">Your Password</label>
+                        <div class="relative has-toggle" data-field>
+                            <input type="password" id="signupPassword" name="signupPassword" required
+                                autocomplete="new-password" class="custom-input">
+                            <button type="button" class="pw-toggle" data-toggle-password="signupPassword"
+                                aria-label="Show password" aria-pressed="false">
+                                <i class="far fa-eye"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="space-y-1.5">
+                        <label for="confirmPassword" class="block text-sm font-bold text-mithi-ink">Confirm
+                            Password</label>
+                        <div class="relative has-toggle" data-field>
+                            <input type="password" id="confirmPassword" name="confirmPassword" required
+                                autocomplete="new-password" class="custom-input">
+                            <button type="button" class="pw-toggle" data-toggle-password="confirmPassword"
+                                aria-label="Show password" aria-pressed="false">
+                                <i class="far fa-eye"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-col items-center text-xs">
+                        <label
+                            class="inline-flex items-center gap-2 min-h-[44px] cursor-pointer select-none text-gray-600 font-medium">
+                            <input type="checkbox" id="agreeTerms" class="check">
+                            <span>I agree to the <a href="../terms/index.html"
+                                    class="underline font-bold text-mithi-ink hover:text-orange-500">Terms &amp; Privacy
+                                    Policies</a></span>
+                        </label>
+                        <p id="termsError" role="alert" class="hidden text-[11px] text-[#E5484D] font-medium">Please
+                            accept the terms and conditions.</p>
+                    </div>
+
+                    <button type="submit" id="signupSubmitBtn" class="btn-primary">
+                        <span id="signupBtnText">Get Started</span>
+                        <i id="signupBtnSpinner" class="fas fa-spinner fa-spin ml-2 hidden" aria-hidden="true"></i>
+                    </button>
+                </form>
+            </div>
+
+            <!-- Shared: social logins -->
+            <div class="relative my-5 flex items-center justify-center">
+                <div class="absolute inset-x-0 top-1/2 border-t border-gray-200"></div>
+                <span class="relative px-4 bg-white text-[11px] text-gray-400 font-medium">or continue with</span>
+            </div>
+
+            <div class="grid grid-cols-3 gap-3">
+                <button type="button" data-social="Google" class="btn-social" aria-label="Continue with Google">
+                    <svg class="w-[18px] h-[18px]" viewBox="0 0 24 24" aria-hidden="true">
+                        <path fill="#4285F4"
+                            d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" />
+                        <path fill="#34A853"
+                            d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" />
+                        <path fill="#FBBC05"
+                            d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z" />
+                        <path fill="#EA4335"
+                            d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z" />
+                    </svg>
+                </button>
+                <button type="button" data-social="Facebook" class="btn-social text-[#1877F2]"
+                    aria-label="Continue with Facebook">
+                    <i class="fab fa-facebook text-lg"></i>
+                </button>
+                <button type="button" data-social="Mobile" class="btn-social text-black"
+                    aria-label="Continue with phone number">
+                    <i class="fas fa-mobile-alt text-lg"></i>
+                </button>
+            </div>
+
+            <p data-mode-panel="login" class="mt-4 text-center text-xs text-gray-500 font-medium">
+                Don't have an account?
+                <a href="#signup" data-auth-mode="signup"
+                    class="inline-flex items-center min-h-[44px] px-1 text-orange-500 font-bold hover:underline">Sign
+                    Up</a>
+            </p>
+            <p data-mode-panel="signup" class="hidden mt-4 text-center text-xs text-gray-500 font-medium">
+                Already have an account?
+                <a href="#login" data-auth-mode="login"
+                    class="inline-flex items-center min-h-[44px] px-1 text-orange-500 font-bold hover:underline">Login</a>
+            </p>
+        </section>
+    </main>
+</body>
+
+</html>

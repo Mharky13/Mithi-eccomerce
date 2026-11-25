@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Notification</title>
+  <link rel="icon" type="image/png" href="../pictures/icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Montserrat+Alternates:ital,wght@0,400;0,500;0,600;0,700;0,800;1,600;1,700;1,800&family=Inter:wght@300;400;500;600&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="../customer.css">
+  <link rel="stylesheet" href="../../shared/nav_bar.css">
+  <link rel="stylesheet" href="notification.css">
+</head>
+
+<body>
+
+  <div id="navbar-container"></div>
+
+  <main id="page">
+    <div class="ds">
+      <nav class="crumbs" aria-label="Breadcrumb">
+        <a href="../../home_page/index.html">Home</a><span class="sep" aria-hidden="true">&gt;</span><a href="../customer.html" aria-current="page">My Account</a>
+      </nav>
+      <h1 class="ds-title">Notification</h1>
+      <div class="ds-wrap"><section class="ds-card" id="ntCard" aria-label="Notifications"><ul class="nt-list" id="ntList" aria-live="polite"></ul></section></div>
+      <aside class="side-card" aria-label="Account menu">
+        <div class="side-user"><span class="su-pic"><img src="../pictures/p.png" alt=""></span><div><h2>Lolong Chi</h2><p class="su-handle">@thomas.norstein</p><p class="su-id">12345678912</p></div></div>
+        <div class="side-tabs" role="tablist">
+          <button type="button" role="tab" class="on" aria-selected="true">My Account</button>
+          <button type="button" role="tab" aria-selected="false">Billings</button>
+        </div>
+        <nav class="side-nav">
+          <button type="button" class="s-item" data-t="Home"><span class="ico" style="--i:url(pictures/home.svg)" aria-hidden="true"></span>Home</button>
+          <button type="button" class="s-item" data-t="Delivery Status"><span class="ico" style="--i:url(pictures/truck.svg)" aria-hidden="true"></span>Delivery Status</button>
+          <button type="button" class="s-item" data-t="Last viewed"><span class="ico" style="--i:url(pictures/view.svg)" aria-hidden="true"></span>Last viewed</button>
+          <button type="button" class="s-item on" data-t="Notification"><span class="ico" style="--i:url(pictures/notif.svg)" aria-hidden="true"></span>Notification</button>
+          <div class="s-group">
+          <button type="button" class="s-item" data-t="Settings"><span class="ico" style="--i:url(pictures/settings.svg)" aria-hidden="true"></span>Settings</button>
+          <ul class="sub">
+            <li><button type="button" data-t="My Profile">My Profile</button></li>
+            <li><button type="button" data-t="Change Password">Change Password</button></li>
+            <li><button type="button" data-t="Privacy Setting">Privacy Setting</button></li>
+            <li><button type="button" data-t="Language and Region">Language and Region</button></li>
+          </ul>
+          </div>
+          <div class="s-group">
+          <button type="button" class="s-item mgmt" data-t="Account Management"><span class="ico" style="--i:url(pictures/account.svg)" aria-hidden="true"></span>Account Management</button>
+          <ul class="sub">
+            <li><button type="button" data-t="Switch Account">Switch Account</button></li>
+            <li><button type="button" data-t="Log Out">Log Out</button></li>
+            <li><button type="button" class="danger" data-t="Delete Account">Delete Account</button></li>
+          </ul>
+          </div>
+          <button type="button" class="s-item" data-t="Help"><span class="ico" style="--i:url(pictures/help.svg)" aria-hidden="true"></span>Help</button>
+        </nav>
+      </aside>
+    </div>
+  </main>
+
+  <script src="../../shared/nav_bar.js"></script>
+  <script src="../customer.js"></script>
+  <script src="notification.js"></script>
+  <script src="../../shared/nav_loader.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mithi - Purchase History</title>
+  <link rel="icon" type="image/png" href="pictures/icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Montserrat+Alternates:ital,wght@0,400;0,500;0,600;0,700;0,800;1,600;1,700;1,800&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="purchase_history.css">
+  <link rel="stylesheet" href="../../shared/nav_bar.css">
+</head>
+
+<body>
+
+  <div id="navbar-container"></div>
+
+  <main id="page" class="oh-page">
+    <section class="oh-banner">
+      <h1 class="oh-title">Order History</h1>
+      <div class="oh-breadcrumb">
+        <a href="#">Profile</a>
+        <span class="oh-crumb-sep" aria-hidden="true">&gt;</span>
+        <span class="oh-crumb-current" aria-current="page">History</span>
+      </div>
+    </section>
+
+    <div class="oh-controls">
+      <div class="oh-tabs" role="tablist">
+        <button type="button" class="oh-tab active" data-tab="order">Order</button>
+        <button type="button" class="oh-tab" data-tab="not-shipped">Not yet Shipped</button>
+        <button type="button" class="oh-tab" data-tab="cancelled">Cancelled Order</button>
+      </div>
+      <div class="oh-date-badge" id="ohDateBadge">Oct 26, 2027</div>
+    </div>
+
+    <div class="oh-list" id="ohOrderList">
+      <article class="oh-card" data-tab="order" data-category="electronics" data-short-date="Oct 26, 2027">
+        <div class="oh-card-top">
+          <div class="oh-meta-left">
+            <div class="oh-meta-group">
+              <span class="oh-meta-label">Order date:</span>
+              <span class="oh-meta-val">October 26, 2027</span>
+            </div>
+            <div class="oh-meta-group">
+              <span class="oh-meta-label">Total Amount:</span>
+              <span class="oh-meta-val price">₱1222.00</span>
+            </div>
+            <div class="oh-meta-group">
+              <span class="oh-meta-label">Ship to:</span>
+              <span class="oh-meta-val">name</span>
+            </div>
+          </div>
+          <div class="oh-meta-right">
+            <div class="oh-order-num">Order #: <span>01234596873</span></div>
+            <button type="button" class="oh-btn" data-action="invoice">View Invoice</button>
+          </div>
+        </div>
+
+        <div class="oh-status">Out for Delivery</div>
+
+        <div class="oh-body">
+          <div class="oh-product">
+            <img class="oh-thumb" src="pictures/action-figure.png" alt="Product 1">
+            <div class="oh-details">
+              <h2 class="oh-prod-title">A Long Product Name That Serves A Purpose For The Dev...</h2>
+              <p class="oh-prod-note">Return or Replace item: Eligible through: November 3, 2027</p>
+              <div class="oh-prod-price">₱1200.00</div>
+              <div class="oh-stock"><span class="oh-stock-dot"></span>In Stock</div>
+              <div class="oh-links">
+                <button type="button" class="oh-link-btn" data-action="buy-again">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#df8d16" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
+                  <span>Buy it Again</span>
+                </button>
+                <span class="oh-link-sep" aria-hidden="true"></span>
+                <button type="button" class="oh-link-btn" data-action="view-product">View Product</button>
+                <span class="oh-link-sep" aria-hidden="true"></span>
+              </div>
+            </div>
+          </div>
+          <button type="button" class="oh-btn oh-cancel-btn" data-action="cancel">Cancel</button>
+        </div>
+      </article>
+
+      <article class="oh-card" data-tab="order" data-category="electronics" data-short-date="Oct 26, 2027">
+        <div class="oh-card-top">
+          <div class="oh-meta-left">
+            <div class="oh-meta-group">
+              <span class="oh-meta-label">Order date:</span>
+              <span class="oh-meta-val">October 26, 2027</span>
+            </div>
+            <div class="oh-meta-group">
+              <span class="oh-meta-label">Total Amount:</span>
+              <span class="oh-meta-val price">₱1222.00</span>
+            </div>
+            <div class="oh-meta-group">
+              <span class="oh-meta-label">Ship to:</span>
+              <span class="oh-meta-val">name</span>
+            </div>
+          </div>
+          <div class="oh-meta-right">
+            <div class="oh-order-num">Order #: <span>01234596873</span></div>
+            <button type="button" class="oh-btn" data-action="invoice">View Invoice</button>
+          </div>
+        </div>
+
+        <div class="oh-status">To Ship</div>
+
+        <div class="oh-body">
+          <div class="oh-product">
+            <img class="oh-thumb" src="pictures/action-figure.png" alt="Product 2">
+            <div class="oh-details">
+              <h2 class="oh-prod-title">A Long Product Name That Serves A Purpose For The Dev...</h2>
+              <p class="oh-prod-note">Return or Replace item: Eligible through: November 3, 2027</p>
+              <div class="oh-prod-price">₱1200.00</div>
+              <div class="oh-stock"><span class="oh-stock-dot"></span>In Stock</div>
+              <div class="oh-links">
+                <button type="button" class="oh-link-btn" data-action="buy-again">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#df8d16" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
+                  <span>Buy it Again</span>
+                </button>
+                <span class="oh-link-sep" aria-hidden="true"></span>
+                <button type="button" class="oh-link-btn" data-action="view-product">View Product</button>
+                <span class="oh-link-sep" aria-hidden="true"></span>
+              </div>
+            </div>
+          </div>
+          <button type="button" class="oh-btn oh-cancel-btn" data-action="cancel">Cancel</button>
+        </div>
+      </article>
+
+      <article class="oh-card" data-tab="not-shipped" data-category="electronics" data-short-date="Oct 18, 2027" hidden>
+        <div class="oh-card-top">
+          <div class="oh-meta-left">
+            <div class="oh-meta-group">
+              <span class="oh-meta-label">Order date:</span>
+              <span class="oh-meta-val">October 18, 2027</span>
+            </div>
+            <div class="oh-meta-group">
+              <span class="oh-meta-label">Total Amount:</span>
+              <span class="oh-meta-val price">₱1222.00</span>
+            </div>
+            <div class="oh-meta-group">
+              <span class="oh-meta-label">Ship to:</span>
+              <span class="oh-meta-val">name</span>
+            </div>
+          </div>
+          <div class="oh-meta-right">
+            <div class="oh-order-num">Order #: <span>01234596873</span></div>
+            <button type="button" class="oh-btn" data-action="invoice">View Invoice</button>
+          </div>
+        </div>
+
+        <div class="oh-status">Pending</div>
+
+        <div class="oh-body">
+          <div class="oh-product">
+            <img class="oh-thumb" src="pictures/action-figure.png" alt="Product 3">
+            <div class="oh-details">
+              <h2 class="oh-prod-title">A Long Product Name That Serves A Purpose For The Dev...</h2>
+              <p class="oh-prod-note">Return or Replace item: Eligible through: November 3, 2027</p>
+              <div class="oh-prod-price">₱1200.00</div>
+              <div class="oh-stock"><span class="oh-stock-dot"></span>In Stock</div>
+              <div class="oh-links">
+                <button type="button" class="oh-link-btn" data-action="buy-again">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#df8d16" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
+                  <span>Buy it Again</span>
+                </button>
+                <span class="oh-link-sep" aria-hidden="true"></span>
+                <button type="button" class="oh-link-btn" data-action="view-product">View Product</button>
+                <span class="oh-link-sep" aria-hidden="true"></span>
+              </div>
+            </div>
+          </div>
+          <button type="button" class="oh-btn oh-cancel-btn" data-action="cancel">Cancel</button>
+        </div>
+      </article>
+
+      <article class="oh-card" data-tab="cancelled" data-category="electronics" data-short-date="Oct 18, 2027" hidden>
+        <div class="oh-card-top">
+          <div class="oh-meta-left">
+            <div class="oh-meta-group">
+              <span class="oh-meta-label">Order date:</span>
+              <span class="oh-meta-val">October 18, 2027</span>
+            </div>
+            <div class="oh-meta-group">
+              <span class="oh-meta-label">Total Amount:</span>
+              <span class="oh-meta-val price">₱1222.00</span>
+            </div>
+            <div class="oh-meta-group">
+              <span class="oh-meta-label">Ship to:</span>
+              <span class="oh-meta-val">name</span>
+            </div>
+          </div>
+          <div class="oh-meta-right">
+            <div class="oh-order-num">Order #: <span>01234596873</span></div>
+            <button type="button" class="oh-btn" data-action="invoice">View Invoice</button>
+          </div>
+        </div>
+
+        <div class="oh-status cancelled">Cancelled</div>
+
+        <div class="oh-body">
+          <div class="oh-product">
+            <img class="oh-thumb" src="pictures/action-figure.png" alt="Product 4">
+            <div class="oh-details">
+              <h2 class="oh-prod-title">A Long Product Name That Serves A Purpose For The Dev...</h2>
+              <p class="oh-prod-note">This order was cancelled. You have not been charged.</p>
+              <div class="oh-prod-price">₱1200.00</div>
+              <div class="oh-stock"><span class="oh-stock-dot"></span>In Stock</div>
+              <div class="oh-links">
+                <button type="button" class="oh-link-btn" data-action="buy-again">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#df8d16" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
+                  <span>Buy it Again</span>
+                </button>
+                <span class="oh-link-sep" aria-hidden="true"></span>
+                <button type="button" class="oh-link-btn" data-action="view-product">View Product</button>
+                <span class="oh-link-sep" aria-hidden="true"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="oh-card" data-tab="cancelled" data-category="electronics" data-short-date="Oct 18, 2027" hidden>
+        <div class="oh-card-top">
+          <div class="oh-meta-left">
+            <div class="oh-meta-group">
+              <span class="oh-meta-label">Order date:</span>
+              <span class="oh-meta-val">October 18, 2027</span>
+            </div>
+            <div class="oh-meta-group">
+              <span class="oh-meta-label">Total Amount:</span>
+              <span class="oh-meta-val price">₱1222.00</span>
+            </div>
+            <div class="oh-meta-group">
+              <span class="oh-meta-label">Ship to:</span>
+              <span class="oh-meta-val">name</span>
+            </div>
+          </div>
+          <div class="oh-meta-right">
+            <div class="oh-order-num">Order #: <span>01234596873</span></div>
+            <button type="button" class="oh-btn" data-action="invoice">View Invoice</button>
+          </div>
+        </div>
+
+        <div class="oh-status cancelled">Cancelled</div>
+
+        <div class="oh-body">
+          <div class="oh-product">
+            <img class="oh-thumb" src="pictures/action-figure.png" alt="Product 5">
+            <div class="oh-details">
+              <h2 class="oh-prod-title">A Long Product Name That Serves A Purpose For The Dev...</h2>
+              <p class="oh-prod-note">This order was cancelled. You have not been charged.</p>
+              <div class="oh-prod-price">₱1200.00</div>
+              <div class="oh-stock"><span class="oh-stock-dot"></span>In Stock</div>
+              <div class="oh-links">
+                <button type="button" class="oh-link-btn" data-action="buy-again">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#df8d16" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
+                  <span>Buy it Again</span>
+                </button>
+                <span class="oh-link-sep" aria-hidden="true"></span>
+                <button type="button" class="oh-link-btn" data-action="view-product">View Product</button>
+                <span class="oh-link-sep" aria-hidden="true"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+    </div>
+
+    <div class="oh-empty" id="ohEmpty" hidden>No orders found in this section.</div>
+  </main>
+
+  <script src="../../shared/nav_bar.js"></script>
+  <script src="purchase_history.js"></script>
+  <script src="../../shared/nav_loader.js"></script>
+</body>
+
+</html>

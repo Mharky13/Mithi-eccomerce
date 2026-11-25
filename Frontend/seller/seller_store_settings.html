@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Store Setting · Mithi Seller Center</title>
+  <meta name="description" content="Sign in, set up your shop and manage your products and orders on Mithi Seller Center.">
+  <meta name="theme-color" content="#f3eee2">
+  <meta name="color-scheme" content="light">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="images/icon.png">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="seller.css">
+</head>
+<body class="seller-body" data-page="store" data-group="seller">
+
+  <div id="app-header" data-center="Store’s Name* Dashboard" data-home="seller_dashboard.html" data-fixed></div>
+  <div id="seller-sidebar" data-active="store"></div>
+
+  <div class="seller-content">
+    <main class="seller-main">
+      <section class="page-banner">
+        <div>
+          <h1>Store mo, Sis</h1>
+          <p>Make your shop feel like you. Keep your details up to date.</p>
+        </div>
+        <span data-banner-mark></span>
+      </section>
+      <div class="store-grid">
+        <section class="panel">
+          <h2>Shop details</h2>
+          <p class="panel-desc">The details customers and couriers need.</p>
+          <form class="store-form" id="store-form" novalidate>
+            <div class="field" data-field="name">
+              <label class="field-label" for="name">Store Name</label>
+              <input class="control" id="name" name="name" type="text" placeholder="" value="StoreNiPare">
+              <p class="field-error" id="name-error" hidden></p>
+            </div>
+            <div class="field" data-field="region">
+              <label class="field-label" for="region">Region</label>
+              <div class="select-wrap"><select class="control" id="region" name="region"><option value="">Choose your region</option></select><span data-icon="chevron-down"></span></div>
+              <p class="field-error" id="region-error" hidden></p>
+            </div>
+            <div class="field" data-field="email">
+              <label class="field-label" for="email">Contact Email</label>
+              <input class="control" id="email" name="email" type="email" placeholder="Add contact email">
+              <p class="field-error" id="email-error" hidden></p>
+            </div>
+            <div class="field" data-field="phone">
+              <label class="field-label" for="phone">Phone Number</label>
+              <input class="control" id="phone" name="phone" type="tel" placeholder="Add phone number" inputmode="tel">
+              <p class="field-error" id="phone-error" hidden></p>
+            </div>
+            <div class="field full" data-field="pickup">
+              <label class="field-label" for="pickup">Pickup address</label>
+              <input class="control" id="pickup" name="pickup" type="text" placeholder="Add your pickup address">
+              <p class="field-error" id="pickup-error" hidden></p>
+            </div>
+            <div class="field full" data-field="description">
+              <label class="field-label" for="description">Description</label>
+              <textarea class="control" id="description" name="description" placeholder="Tell shoppers a little about your store."></textarea>
+              <p class="field-error" id="description-error" hidden></p>
+            </div>
+            <div class="field" data-field="fee">
+              <label class="field-label" for="fee">Base shipping fee</label>
+              <input class="control" id="fee" name="fee" type="text" placeholder="Enter shipping fee" inputmode="decimal">
+              <p class="field-error" id="fee-error" hidden></p>
+            </div>
+            <div class="field" data-field="status">
+              <label class="field-label" for="status">Store status</label>
+              <div class="select-wrap"><select class="control" id="status" name="status"><option value="">Select status</option></select><span data-icon="chevron-down"></span></div>
+              <p class="field-error" id="status-error" hidden></p>
+            </div>
+            <div class="full">
+              <button type="submit" class="store-save">Save Changes</button>
+              <p class="save-status" id="save-status" role="status"></p>
+            </div>
+          </form>
+        </section>
+
+        <section class="panel h-fit">
+          <h2 class="tips-title">A warm welcome starts here.</h2>
+          <p class="panel-desc tips-desc">Help people feel confident shopping with your store.</p>
+          <ol class="tips">
+            <li><span class="num">01</span>Use a name shoppers recognize.</li>
+            <li><span class="num">02</span>Add a reachable email and phone.</li>
+            <li><span class="num">03</span>Keep your pickup address current.</li>
+            <li><span class="num">04</span>Share what makes your shop special.</li>
+          </ol>
+        </section>
+      </div>
+    </main>
+    <div id="seller-footer"></div>
+  </div>
+  
+  <script src="seller.js"></script>
+</body>
+</html>

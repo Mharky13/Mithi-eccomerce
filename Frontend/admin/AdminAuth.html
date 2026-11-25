@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="#3d4d66" name="theme-color"/>
+<meta content="light" name="color-scheme"/>
+<title>Admin Login — Tara na, Sis!</title>
+<meta content="Admin dashboard for managing sellers, users, products, orders and refunds." name="description"/>
+<link href="images/mithi-logo.png" rel="icon"/>
+<link href="images/mithi-logo.png" rel="apple-touch-icon"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Montserrat:wght@600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="admin.css" rel="stylesheet"/>
+<script defer="" src="admin.js"></script>
+</head>
+<body>
+<main class="login-layout" id="login-view">
+<aside class="login-brand">
+<div class="login-brand-header">
+<img alt="" class="brand-mark brand-mark-lg" height="80" src="images/mithi-logo.png" width="80"/>
+<span class="login-brand-label">Admin Workspace</span>
+</div>
+<div class="login-brand-body">
+<h1 class="login-brand-title">Tara na,<br/>Sis!</h1>
+<div class="login-brand-accent"></div>
+<p class="login-brand-subtitle">Admin Dashboard</p>
+</div>
+<p class="login-brand-footer">Auth • Administration</p>
+<div aria-hidden="true" class="login-brand-ring"></div>
+</aside>
+<section class="login-panel">
+<div class="login-card">
+<p class="eyebrow">Admin Access</p>
+<h2 class="login-title">Admin Login</h2>
+<p class="login-description" id="login-description">Enter your credentials to access the admin.</p>
+<div class="login-alert" hidden="" id="login-alert" role="alert">
+<svg aria-hidden="true" class="icon" viewbox="0 0 24 24">
+<circle cx="12" cy="12" r="10"></circle>
+<line x1="12" x2="12" y1="8" y2="12"></line>
+<line x1="12" x2="12.01" y1="16" y2="16"></line>
+</svg>
+<div>
+<p class="login-alert-title">We couldn't sign you in</p>
+<p class="login-alert-text">Username or password is incorrect. Check your details and try again.</p>
+</div>
+</div>
+<form class="login-form" id="login-form" novalidate="">
+<div class="field">
+<label for="username">Username</label>
+<input aria-invalid="false" autocomplete="username" id="username" name="username" placeholder="Enter username"/>
+</div>
+<div class="field">
+<label for="password">Password</label>
+<input aria-invalid="false" autocomplete="current-password" id="password" name="password" placeholder="Password" type="password"/>
+</div>
+<button class="login-submit" type="submit">Login</button>
+<p class="login-help" hidden="" id="login-help">Contact your administrator if you need access.</p>
+</form>
+</div>
+</section>
+</main>
+
+</body>
+</html>

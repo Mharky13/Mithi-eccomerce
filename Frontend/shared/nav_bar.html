@@ -1,0 +1,93 @@
+<header class="site-header">
+    <a class="brand" href="{{FRONTEND_ROOT}}home_page/index.html" aria-label="Mithi home">
+      <img src="{{FRONTEND_ROOT}}shared/pictures/mithi-circlelogo 1.png" alt="">
+      <span>Mithi</span>
+    </a>
+
+    <form class="search" role="search" id="searchForm">
+      <div class="cat-wrap">
+        <button type="button" class="category-btn" id="categoryBtn" aria-haspopup="true" aria-expanded="false"
+          aria-controls="categoryMenu">
+          <svg class="grid-ico" viewBox="0 0 16 16" aria-hidden="true">
+            <g fill="currentColor">
+              <circle cx="3" cy="3" r="1.5" />
+              <circle cx="8" cy="3" r="1.5" />
+              <circle cx="13" cy="3" r="1.5" />
+              <circle cx="3" cy="8" r="1.5" />
+              <circle cx="8" cy="8" r="1.5" />
+              <circle cx="13" cy="8" r="1.5" />
+              <circle cx="3" cy="13" r="1.5" />
+              <circle cx="8" cy="13" r="1.5" />
+              <circle cx="13" cy="13" r="1.5" />
+            </g>
+          </svg><span class="lbl">Categories</span><span class="chev" aria-hidden="true">▾</span>
+        </button>
+        <div class="cat-menu" id="categoryMenu">
+          <div class="cat-pills" id="catActive">
+            <button type="button" class="cat-pill" data-cat="home" aria-pressed="false" title="Home"><img
+                class="cat-icon" src="{{FRONTEND_ROOT}}shared/pictures/Home Stuff.png" alt="Home"><span class="cat-badge"
+                aria-hidden="true"></span></button>
+            <button type="button" class="cat-pill" data-cat="electronics" aria-pressed="false" title="Electronics"><img
+                class="cat-icon" src="{{FRONTEND_ROOT}}shared/pictures/Tech Stuff.png" alt="Electronics"><span class="cat-badge"
+                aria-hidden="true"></span></button>
+            <button type="button" class="cat-pill" data-cat="jewelry" aria-pressed="false" title="Jewelry"><img
+                class="cat-icon" src="{{FRONTEND_ROOT}}shared/pictures/Accessories.png" alt="Jewelry"><span class="cat-badge"
+                aria-hidden="true"></span></button>
+            <button type="button" class="cat-pill" data-cat="wellness" aria-pressed="false" title="Wellness"><img
+                class="cat-icon" src="{{FRONTEND_ROOT}}shared/pictures/Wellness.png" alt="Wellness"><span class="cat-badge"
+                aria-hidden="true"></span></button>
+          </div>
+          <div class="cat-foot">
+            <button type="button" class="cat-edit" id="catEdit">Edit</button>
+            <div class="cat-editing"><span>Edit and sort</span><button type="button" class="cat-done" id="catDone"
+                aria-label="Done editing">✓</button></div>
+          </div>
+          <div class="cat-bin-wrap">
+            <div class="cat-bin-clip">
+              <div class="cat-bin" id="catBin" aria-label="Removed categories"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <input id="searchInput" type="search" placeholder="Search products" aria-label="Search products"
+        autocomplete="off">
+      <button type="submit" class="search-btn" aria-label="Search"><img src="{{FRONTEND_ROOT}}shared/pictures/SearchButton.png" alt=""></button>
+    </form>
+
+    <div class="header-actions">
+      <button type="button" class="icon-btn cart-button" aria-label="Cart"><img src="{{FRONTEND_ROOT}}shared/pictures/Cart.svg" alt=""><span
+          id="cartCount" hidden>0</span></button>
+      <button type="button" class="icon-btn wish-btn" aria-label="Wishlist"><img src="{{FRONTEND_ROOT}}shared/pictures/Wishlist.png"
+          alt=""></button>
+      <span class="username">Username</span>
+      <button type="button" class="avatar user-btn" aria-label="User account"><img src="{{FRONTEND_ROOT}}shared/pictures/p.png" alt=""></button>
+    </div>
+  </header>
+
+  <nav class="main-nav" aria-label="Main">
+    <button type="button" class="nav-item" id="regionalFindsBtn">Regional finds</button>
+    <button type="button" class="nav-item" id="vouchersBtn">Vouchers</button>
+    <button type="button" class="nav-seller" id="sellerBtn">
+      <b>Sell Now!</b>
+    </button>
+  </nav>
+
+  <!-- Previous Regional Finds button
+<button type="button" class="nav-item" data-cat="2" data-target="topProductsSection">Regional Finds</button>
+-->
+
+<!-- New Arrivals button
+<button type="button" class="nav-item" data-cat="1" data-target="topProductsSection">New Arrivals</button>
+-->
+
+<!-- Coupons button
+<button type="button" class="nav-item" data-toast="Coupons coming soon">Coupons</button>
+-->
+
+<!-- Customer Service button
+<button type="button" class="nav-item">Customer Service</button>
+-->
+
+<!-- Top Products button
+<button type="button" class="nav-item" data-cat="0" data-target="topProductsSection">Top Products</button>
+-->

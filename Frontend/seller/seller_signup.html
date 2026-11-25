@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Create your seller account · Mithi Seller Center</title>
+  <meta name="description" content="Sign in, set up your shop and manage your products and orders on Mithi Seller Center.">
+  <meta name="theme-color" content="#f3eee2">
+  <meta name="color-scheme" content="light">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="images/icon.png">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="seller.css">
+</head>
+<body class="" data-page="signup" data-group="auth">
+
+  <main class="auth-page">
+    <div class="auth-bags" aria-hidden="true">
+      <img class="bag-back" src="images/bag-orange.png" alt="" width="1000" height="798">
+      <img class="bag-blue" src="images/bag-blue.png" alt="" width="1000" height="798">
+      <img class="bag-orange" src="images/bag-orange.png" alt="" width="1000" height="798">
+    </div>
+
+    <div class="auth-wrap">
+      <section class="auth-hero">
+        <h1>
+          <span class="hero-name">Mithi</span>
+          <span class="hero-sub">Seller Center</span>
+        </h1>
+        <p class="auth-tagline">Your shop starts here.</p>
+
+        <div class="auth-bags-mobile" aria-hidden="true">
+          <img class="bag-blue" src="images/bag-blue.png" alt="" width="1000" height="798">
+          <img class="bag-orange" src="images/bag-orange.png" alt="" width="1000" height="798">
+        </div>
+      </section>
+
+      <section class="auth-card is-signup">
+        <div>
+          <h2 class="signup-title">Create your seller account</h2>
+          <p class="signup-lead">Create your account first. Your shop details come next.</p>
+
+          <form class="signup-form" id="signup-form" novalidate>
+            <div class="signup-fields">
+          <div class="auth-field is-md" data-field="fullName">
+            <div class="auth-label-row">
+              <label class="auth-label" for="fullName">Full name</label>
+            </div>
+            <input class="auth-input" id="fullName" name="fullName" type="text" placeholder="Enter your full name" data-placeholder="Enter your full name" autocomplete="name">
+            <p class="auth-error" id="fullName-error" hidden></p>
+          </div>
+          <div class="auth-field is-md" data-field="mobile">
+            <div class="auth-label-row">
+              <label class="auth-label" for="mobile">Mobile number</label>
+            </div>
+            <input class="auth-input" id="mobile" name="mobile" type="tel" placeholder="+63 9XX XXX XXXX" data-placeholder="+63 9XX XXX XXXX" inputmode="tel" autocomplete="tel">
+            <p class="auth-error" id="mobile-error" hidden></p>
+          </div>
+          <div class="auth-field is-md" data-field="email">
+            <div class="auth-label-row">
+              <label class="auth-label" for="email">Email address</label>
+            </div>
+            <input class="auth-input" id="email" name="email" type="email" placeholder="you@example.com" data-placeholder="you@example.com" autocomplete="email">
+            <p class="auth-error" id="email-error" hidden></p>
+          </div>
+          <div class="auth-field is-md" data-field="password">
+            <div class="auth-label-row">
+              <label class="auth-label" for="password">Password</label>
+            </div>
+            <input class="auth-input" id="password" name="password" type="password" placeholder="At least 8 characters" data-placeholder="At least 8 characters" autocomplete="new-password">
+            <p class="auth-error" id="password-error" hidden></p>
+          </div>
+          <div class="auth-field is-md tight" data-field="confirm">
+            <div class="auth-label-row">
+              <label class="auth-label" for="confirm">Confirm Password</label>
+            </div>
+            <input class="auth-input" id="confirm" name="confirm" type="password" placeholder="Re-enter your password" data-placeholder="Re-enter your password" autocomplete="new-password">
+            <p class="auth-error" id="confirm-error" hidden></p>
+          </div>
+            </div>
+
+            <div class="terms" id="terms-wrap">
+              <label>
+                <input type="checkbox" id="terms" name="terms">
+                <span>I agree to the <a href="#terms">Terms &amp; Privacy Policies</a></span>
+              </label>
+              <p class="terms-error" id="terms-error" hidden></p>
+            </div>
+
+            <button type="submit" class="btn-auth">Create account &amp; continue</button>
+            <p class="signup-foot">Already selling on Mithi? <a href="seller_login.html">Sign in</a></p>
+          </form>
+        </div>
+      </section>
+    </div>
+  </main>
+  
+  <script src="seller.js"></script>
+</body>
+</html>

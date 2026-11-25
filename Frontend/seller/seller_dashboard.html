@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dashboard · Mithi Seller Center</title>
+  <meta name="description" content="Sign in, set up your shop and manage your products and orders on Mithi Seller Center.">
+  <meta name="theme-color" content="#f3eee2">
+  <meta name="color-scheme" content="light">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="images/icon.png">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="seller.css">
+</head>
+<body class="seller-body" data-page="dashboard" data-group="seller">
+
+  <div id="app-header" data-center="Store’s Name* Dashboard" data-home="seller_dashboard.html" data-fixed></div>
+  <div id="seller-sidebar" data-active="dashboard"></div>
+
+  <div class="seller-content">
+    <main class="seller-main">
+      <section class="page-banner">
+        <div>
+          <h1>Kamusta, Sis</h1>
+          <p>A little overview of your shop today.</p>
+        </div>
+        <span data-banner-mark></span>
+      </section>
+      <div class="stats-grid" id="stats"></div>
+
+      <div class="dash-grid">
+        <section class="panel flex-col">
+          <h2>Recent Order</h2>
+          <p class="panel-desc">Your latest purchases at a glance.</p>
+          <div class="table-scroll mt-20">
+            <table class="data-table compact">
+              <thead>
+                <tr><th>Order</th><th>Buyer</th><th>Total</th><th>Status</th></tr>
+              </thead>
+              <tbody id="recent-orders"></tbody>
+            </table>
+          </div>
+          <a class="btn-outline btn-view-all" href="seller_orders.html">View all orders</a>
+        </section>
+
+        <div class="dash-side">
+          <section class="panel">
+            <h2>Stock Alert</h2>
+            <p class="panel-desc">A little attention goes a long way.</p>
+            <ul class="stock-list" id="stock-list"></ul>
+          </section>
+          <section class="promo">
+            <h2>Your next great day starts here.</h2>
+            <p>Keep your products up to date so shoppers can find their next favorite.</p>
+          </section>
+        </div>
+      </div>
+    </main>
+    <div id="seller-footer"></div>
+  </div>
+  
+  <script src="seller.js"></script>
+</body>
+</html>

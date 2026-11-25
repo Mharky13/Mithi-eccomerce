@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Set up your shop · Mithi Seller Center</title>
+  <meta name="description" content="Sign in, set up your shop and manage your products and orders on Mithi Seller Center.">
+  <meta name="theme-color" content="#f3eee2">
+  <meta name="color-scheme" content="light">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="images/icon.png">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="seller.css">
+</head>
+<body class="onboarding" data-page="onboarding-shop" data-group="onboarding">
+
+  <div id="app-header" data-center="SET UP YOUR SHOP" data-home="seller_login.html"></div>
+  <div class="onboarding-inner">
+    <aside class="onboarding-aside">
+      <p class="aside-eyebrow">Seller onboarding</p>
+      <p class="aside-title">Your next chapter<br>starts here.</p>
+      <p class="aside-sub">A few details today.<br>A world of customers tomorrow.</p>
+
+      <nav class="steps" aria-label="Onboarding steps">
+        <ol>
+            <li>
+              <a class="step-link is-active" href="seller_application.html" aria-current="step">
+                <span class="step-num" aria-hidden="true">1</span>
+                <span>
+                  <span class="step-title">Shop information</span>
+                  <span class="step-detail">Name &amp; pickup address</span>
+                  <span class="sr-only"> (current step)</span>
+                </span>
+              </a>
+            </li>
+            <li>
+              <a class="step-link" href="seller_business_information.html">
+                <span class="step-num" aria-hidden="true">2</span>
+                <span>
+                  <span class="step-title">Business information</span>
+                  <span class="step-detail">Registration &amp; tax details</span>
+                  <span class="sr-only"></span>
+                </span>
+              </a>
+            </li>
+        </ol>
+      </nav>
+
+      <div class="aside-extra">
+        <p class="know-title">Good to know</p>
+        <p class="know-text">Use an address where couriers can reliably collect your orders.</p>
+        <p class="know-privacy">Your information stays private<br>and is used for seller verification.</p>
+      </div>
+    </aside>
+
+    <main class="onboarding-main">
+      <form id="shop-form" novalidate>
+        <p class="eyebrow">STEP 1 OF 2</p>
+        <h1 class="page-title">Let&apos;s set up your shop</h1>
+        <div class="page-lead">
+          <p>Start with your shop name and where we&apos;ll pick up your orders.</p>
+          <p class="required-note">* Required fields</p>
+        </div>
+
+        <div class="form-stack">
+        <div class="form-banner" id="form-banner" role="alert" tabindex="-1" hidden>
+          <p class="form-banner-title"><span aria-hidden="true">! </span><span class="form-banner-title-text"></span></p>
+          <div class="form-banner-body"></div>
+        </div>
+
+        <section class="section-card" aria-labelledby="shop-information-title">
+          <h2 id="shop-information-title">Shop information</h2>
+          <p class="section-desc">Make it memorable. This is the name customers will see.</p>
+          <div class="section-body">
+        <div class="field" data-field="shopName">
+          <label class="field-label" for="shopName">Shop name *</label>
+          <input class="control" id="shopName" name="shopName" type="text" placeholder="Enter your shop name">
+          <p class="field-error" id="shopName-error" hidden></p>
+        </div>
+          </div>
+        </section>
+
+        <section class="section-card" aria-labelledby="pickup-address-title">
+          <h2 id="pickup-address-title">Pickup address</h2>
+          <p class="section-desc">Tell us who to contact and where couriers should collect your orders.</p>
+          <div class="section-body">
+            <div class="form-grid g-md-2">
+        <div class="field" data-field="fullName">
+          <label class="field-label" for="fullName">Full name *</label>
+          <input class="control" id="fullName" name="fullName" type="text" placeholder="Enter the pickup contact’s full name" autocomplete="name">
+          <p class="field-error" id="fullName-error" hidden></p>
+        </div>
+        <div class="field" data-field="phone">
+          <label class="field-label" for="phone">Phone number *</label>
+          <div class="control phone-control"><span class="phone-prefix" aria-hidden="true">+63</span><span class="phone-sep" aria-hidden="true"></span><input id="phone" name="phone" type="tel" inputmode="numeric" autocomplete="tel-national" placeholder="9XX XXX XXXX"></div>
+          <p class="field-error" id="phone-error" hidden></p>
+        </div>
+            </div>
+
+            <div class="form-grid g-md-3 mt-5">
+        <div class="field" data-field="region">
+          <label class="field-label" for="region">Region *</label>
+          <div class="select-wrap"><select class="control" id="region" name="region"><option value="">Select region</option></select><span data-icon="chevron-down"></span></div>
+          <p class="field-error" id="region-error" hidden></p>
+        </div>
+        <div class="field" data-field="province">
+          <label class="field-label" for="province">Province *</label>
+          <div class="select-wrap"><select class="control" id="province" name="province" disabled><option value="">Select province</option></select><span data-icon="chevron-down"></span></div>
+          <p class="field-error" id="province-error" hidden></p>
+        </div>
+        <div class="field" data-field="city">
+          <label class="field-label" for="city">City / Municipality *</label>
+          <div class="select-wrap"><select class="control" id="city" name="city" disabled><option value="">Select city / municipality</option></select><span data-icon="chevron-down"></span></div>
+          <p class="field-error" id="city-error" hidden></p>
+        </div>
+            </div>
+
+            <div class="form-grid g-md-2 mt-5">
+        <div class="field" data-field="barangay">
+          <label class="field-label" for="barangay">Barangay *</label>
+          <div class="select-wrap"><select class="control" id="barangay" name="barangay" disabled><option value="">Select barangay</option></select><span data-icon="chevron-down"></span></div>
+          <p class="field-error" id="barangay-error" hidden></p>
+          <p class="field-hint">Choose your location in order: region → province → city → barangay.</p>
+        </div>
+        <div class="field" data-field="postal">
+          <label class="field-label" for="postal">Postal code *</label>
+          <div class="select-wrap"><select class="control" id="postal" name="postal" disabled><option value="">Select postal code</option></select><span data-icon="chevron-down"></span></div>
+          <p class="field-error" id="postal-error" hidden></p>
+        </div>
+            </div>
+
+        <div class="field mt-5" data-field="address">
+          <label class="field-label" for="address">Detailed address *</label>
+          <textarea class="control" id="address" name="address" placeholder="Unit no., building, street, subdivision, and nearby landmark" autocomplete="street-address"></textarea>
+          <p class="field-error" id="address-error" hidden></p>
+        </div>
+          </div>
+        </section>
+        </div>
+
+        <div class="form-footer">
+          <p class="form-footer-note" id="footer-note">You can review your details before submitting.</p>
+          <div class="form-footer-actions">
+            <button type="submit" class="btn-primary btn-full btn-full-sm">Continue</button>
+          </div>
+        </div>
+      </form>
+    </main>
+  </div>
+  
+  <script src="seller.js"></script>
+</body>
+</html>

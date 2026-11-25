@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="#3d4d66" name="theme-color"/>
+<meta content="light" name="color-scheme"/>
+<title>User Management — Tara na, Sis!</title>
+<meta content="Admin dashboard for managing sellers, users, products, orders and refunds." name="description"/>
+<link href="images/mithi-logo.png" rel="icon"/>
+<link href="images/mithi-logo.png" rel="apple-touch-icon"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Montserrat:wght@600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="admin.css" rel="stylesheet"/>
+<script defer="" src="admin.js"></script>
+</head>
+<body>
+
+<div class="admin-layout" id="admin-view">
+<aside class="sidebar">
+<a class="sidebar-brand" href="admin_dashboard.html">
+<img alt="" class="brand-mark" height="80" src="images/mithi-logo.png" width="80"/>
+<span class="sidebar-brand-text">
+<span class="sidebar-brand-title">Admin</span>
+<span class="sidebar-brand-subtitle">Workspace</span>
+</span>
+</a>
+<nav aria-label="Management" class="sidebar-nav">
+<p class="sidebar-heading">Management</p>
+<ul class="sidebar-list">
+<li>
+<a class="sidebar-link" href="admin_dashboard.html">
+<span class="sidebar-index">01</span>
+                Admin Dashboard
+              </a>
+</li>
+<li>
+<a class="sidebar-link" href="seller_application.html">
+<span class="sidebar-index">02</span>
+                Seller Application
+              </a>
+</li>
+<li>
+<a aria-current="page" class="sidebar-link" href="AdminUserManagement.html">
+<span class="sidebar-index">03</span>
+                User Management
+              </a>
+</li>
+<li>
+<a class="sidebar-link" href="product_catalog.html">
+<span class="sidebar-index">04</span>
+                P/C Management
+              </a>
+</li>
+<li>
+<a class="sidebar-link" href="order_management.html">
+<span class="sidebar-index">05</span>
+                Order Management
+              </a>
+</li>
+<li>
+<a class="sidebar-link" href="complaint_management.html">
+<span class="sidebar-index">06</span> Complaint Management</a>
+</li><li>
+<a class="sidebar-link" href="refund_management.html"><span class="sidebar-index">07</span> Refund Management</a>
+</li>
+</ul>
+</nav>
+<div class="sidebar-footer">
+<span class="sidebar-footer-title">Tara na, Sis!</span>
+<a class="sidebar-logout" href="AdminAuth.html">
+<svg aria-hidden="true" class="icon icon-sm" viewbox="0 0 24 24"><path d="m16 17 5-5-5-5"></path><path d="M21 12H9"></path><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path></svg>
+            Log out
+          </a>
+</div>
+</aside>
+<div class="admin-content">
+<header class="topbar">
+<form action="#" class="topbar-search" role="search">
+<label class="sr-only" for="admin-search">Search</label>
+<svg aria-hidden="true" class="icon icon-sm" viewbox="0 0 24 24"><circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.3-4.3"></path></svg>
+<input id="admin-search" placeholder="Search" type="search"/>
+</form>
+<div class="topbar-actions">
+<button aria-label="Notifications" class="icon-button" type="button">
+<svg aria-hidden="true" class="icon" viewbox="0 0 24 24"><path d="M10.268 21a2 2 0 0 0 3.464 0"></path><path d="M3.262 15.326A1 1 0 0 0 4 17h16a1 1 0 0 0 .74-1.673C19.41 13.956 18 12.499 18 8A6 6 0 0 0 6 8c0 4.499-1.411 5.956-2.738 7.326"></path></svg>
+</button>
+<a class="topbar-user" href="AdminAuth.html" title="Log out">
+<span class="avatar">A</span>
+              Admin
+            </a>
+</div>
+</header>
+<main class="admin-main">
+
+
+<section class="admin-page" id="users">
+<h1 class="page-title">User Management</h1>
+<ul class="stat-grid stat-grid-3">
+<li class="stat-card">
+<p class="stat-label">Total Users</p>
+<p class="stat-value">
+<span data-state="empty">—</span>
+<span class="stat-unavailable" data-state="error" hidden="">Unavailable</span>
+</p>
+<div class="stat-accent"></div>
+</li>
+<li class="stat-card">
+<p class="stat-label">New Users</p>
+<p class="stat-value">
+<span data-state="empty">—</span>
+<span class="stat-unavailable" data-state="error" hidden="">Unavailable</span>
+</p>
+<div class="stat-accent"></div>
+</li>
+<li class="stat-card">
+<p class="stat-label">Active Session</p>
+<p class="stat-value">
+<span data-state="empty">—</span>
+<span class="stat-unavailable" data-state="error" hidden="">Unavailable</span>
+</p>
+<div class="stat-accent"></div>
+</li>
+</ul>
+<section aria-labelledby="users-table-title" class="table-panel">
+<div class="table-panel-header">
+<h2 class="section-title" id="users-table-title">All System Users</h2>
+<span class="badge-error" data-state="error" hidden="">Load failed</span>
+</div>
+<div class="table-scroll">
+<table class="data-table">
+<thead>
+<tr>
+<th scope="col">Name</th>
+<th scope="col">Role</th>
+<th scope="col">Status</th>
+<th scope="col">Registration Date</th>
+<th scope="col">Last login</th>
+<th scope="col">Actions</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td colspan="6">
+<div class="state-message" data-state="empty">
+<span class="empty-icon"><svg aria-hidden="true" class="icon" viewbox="0 0 24 24"><path d="M5 12h14"></path></svg></span>
+<p class="empty-title">No records to display</p>
+<p class="state-description">Records will appear here when available.</p>
+</div>
+<div data-state="error" hidden="">
+<div class="state-message" role="alert">
+<span aria-hidden="true" class="error-mark">!</span>
+<p class="error-title error-title-compact">We couldn't load users</p>
+<p class="state-description">User records and activity totals are unavailable. Try again to retrieve the latest data.</p>
+<div class="error-actions">
+<a class="button-primary" href="AdminUserManagement.html">Try again</a>
+<a class="button-link" href="mailto:support@taranasis.com">Contact support</a>
+</div>
+</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<nav aria-label="Pagination" class="pagination" data-state="empty">
+<button aria-label="Previous page" disabled="" type="button"><svg aria-hidden="true" class="icon icon-sm" viewbox="0 0 24 24"><path d="m15 18-6-6 6-6"></path></svg></button>
+<span>Page</span>
+<span aria-current="page" class="pagination-current">1</span>
+<button aria-label="Next page" disabled="" type="button"><svg aria-hidden="true" class="icon icon-sm" viewbox="0 0 24 24"><path d="m9 18 6-6-6-6"></path></svg></button>
+</nav>
+<p class="footnote table-footnote" data-state="error" hidden="">User data could not be retrieved. No records are shown.</p>
+</section>
+</section>
+
+
+
+</main>
+</div>
+</div>
+</body>
+</html>

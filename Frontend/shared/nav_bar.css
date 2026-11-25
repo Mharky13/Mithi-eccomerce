@@ -1,0 +1,901 @@
+/* Shared styles for every page: base, header, categories dropdown, main nav, toast.
+   Page-specific styles go in their own file. */
+:root {
+  --orange: #df8d16;
+  --orange-d: #c66f00;
+  --orange-l: #f7e5c9;
+  --slate: #3d536b;
+  --slate-l: #5f7493;
+  --slate-d: #4a5665;
+  --cream: #f8f5ed;
+  --cream-2: #f3ead5;
+  --muted: #8b969f;
+  --ease: cubic-bezier(.22, .61, .36, 1);
+  --spring: cubic-bezier(.34, 1.56, .64, 1);
+  --head: 'Montserrat Alternates', system-ui, sans-serif;
+  --body: var(--head);
+  --shadow: 0 6px 18px rgba(74, 86, 101, .16)
+}
+
+* {
+  box-sizing: border-box
+}
+
+html {
+  scroll-behavior: smooth
+}
+
+body {
+  margin: 0;
+  background: var(--cream);
+  color: var(--slate-d);
+  font: 14px/1.5 var(--body);
+  overflow-x: hidden
+}
+
+img {
+  max-width: 100%
+}
+
+button,
+input {
+  font: inherit;
+  color: inherit
+}
+
+button {
+  cursor: pointer;
+  border: 0;
+  background: none;
+  padding: 0
+}
+
+a {
+  color: inherit
+}
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0
+}
+
+:focus-visible {
+  outline: 2px solid var(--slate);
+  outline-offset: 2px
+}
+
+.icon-btn,
+.nav-item,
+.avatar,
+.category-btn,
+.search-btn,
+.cat-pill,
+.cat-edit,
+.nav-seller {
+  transition: transform .25s var(--ease), background-color .25s var(--ease), box-shadow .25s var(--ease), color .25s var(--ease), opacity .25s var(--ease)
+}
+
+/* Header */
+.site-header {
+  background: #fffaf0;
+  padding: 12px clamp(12px, 3vw, 36px);
+  display: flex;
+  align-items: center;
+  gap: clamp(8px, 1.6vw, 20px);
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  box-shadow: 0 1px 0 #efe4d0
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  flex: none;
+  font: 700 clamp(20px, 2.4vw, 26px)/1 var(--head);
+  color: var(--orange);
+  text-decoration: none;
+  white-space: nowrap
+}
+
+.brand img {
+  height: clamp(30px, 4vw, 38px);
+  width: auto;
+  display: block;
+  flex: none
+}
+
+.search {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  min-width: 0;
+  height: 40px;
+  background: #fff;
+  border: 0;
+  border-radius: 999px;
+  position: relative;
+  transition: box-shadow .25s var(--ease)
+}
+
+.search:focus-within {
+  box-shadow: 0 0 0 4px rgba(223, 141, 22, .15)
+}
+
+.search input {
+  flex: 1;
+  min-width: 0;
+  border: 0;
+  outline: 0;
+  padding: 0 14px;
+  background: transparent;
+  font-size: 13px
+}
+
+.search-btn {
+  width: 30px;
+  height: 30px;
+  margin-right: 5px;
+  flex: none;
+  border-radius: 50%;
+  background: var(--orange);
+  display: grid;
+  place-items: center
+}
+
+.search-btn img {
+  width: 15px;
+  height: 15px;
+  object-fit: contain
+}
+
+.search-btn:hover {
+  transform: scale(1.1)
+}
+
+/* Categories dropdown */
+.cat-wrap {
+  position: relative;
+  height: 100%;
+  flex: none
+}
+
+.category-btn {
+  height: 100%;
+  background: var(--orange);
+  color: #fff;
+  padding: 0 16px;
+  border-radius: 999px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  white-space: nowrap;
+  font-weight: 500;
+  box-shadow: 0 3px 8px rgba(223, 141, 22, .35)
+}
+
+.category-btn:hover {
+  background: var(--slate-d);
+  box-shadow: 0 5px 12px rgba(74, 86, 101, .38);
+  transform: translateY(-1px)
+}
+
+.category-btn.open {
+  background: #66758b;
+  box-shadow: 0 5px 12px rgba(74, 86, 101, .3)
+}
+
+.category-btn:active {
+  transform: scale(.96)
+}
+
+.grid-ico {
+  width: 14px;
+  height: 14px;
+  flex: none;
+  transition: transform .35s var(--spring)
+}
+
+.category-btn:hover .grid-ico,
+.category-btn.open .grid-ico {
+  transform: rotate(90deg) scale(1.1)
+}
+
+.chev {
+  display: none
+}
+
+/* Dropdown panel (caret position --caret is set from JS to the button's centre) */
+.cat-menu {
+  --panel: #faf7ee;
+  position: absolute;
+  top: calc(100% + 12px);
+  left: 0;
+  z-index: 60;
+  width: max-content;
+  min-width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  padding: 16px 18px 16px;
+  background: var(--panel);
+  border-radius: 18px;
+  box-shadow: 0 14px 30px rgba(61, 83, 107, .22);
+  max-width: calc(100vw - 20px);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-8px) scale(.96);
+  transform-origin: var(--caret, 34px) 0;
+  transition: opacity .25s var(--ease), transform .3s var(--spring), visibility 0s linear .3s
+}
+
+.cat-menu.open {
+  opacity: 1;
+  visibility: visible;
+  transform: none;
+  transition-delay: 0s;
+}
+
+.cat-menu::before {
+  content: "";
+  position: absolute;
+  top: -6px;
+  left: calc(var(--caret, 34px) - 6px);
+  width: 12px;
+  height: 12px;
+  background: var(--panel);
+  border-radius: 3px 0 0 0;
+  transform: rotate(45deg)
+}
+
+.cat-pills {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  min-height: 50px;
+  padding: 6px 6px 0
+}
+
+/* Category icon buttons: put your own images in pictures/cat-<name>.png (alt text shows until then) */
+.cat-pill {
+  --ring: 0 0 0 0 transparent;
+  position: relative;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: var(--orange);
+  color: #fff;
+  display: grid;
+  place-items: center;
+  box-shadow: var(--ring);
+  transition: transform .25s var(--ease), box-shadow .25s var(--ease), filter .25s var(--ease), scale .2s var(--ease)
+}
+
+.cat-icon {
+  width: 80%;
+  height: 80%;
+  border-radius: 50%;
+  object-fit: cover;
+  overflow: hidden;
+  pointer-events: none;
+  font: 600 8px/1 var(--head);
+  text-align: center;
+  color: #fff
+}
+
+.cat-pill:hover {
+  transform: translateY(-3px);
+  filter: brightness(1.07)
+}
+
+.cat-pill[aria-pressed=true] {
+  box-shadow: var(--ring), 0 0 0 3px var(--panel), 0 0 0 5px var(--slate-l)
+}
+
+/* Remove (red minus) / add (dark plus) badge, only visible while editing */
+.cat-badge {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background-color: #e5484d;
+  background-image: linear-gradient(#fff, #fff);
+  background-size: 8px 2px;
+  background-position: center;
+  background-repeat: no-repeat;
+  box-shadow: 0 0 0 2px var(--panel);
+  transform: scale(0);
+  opacity: 0;
+  pointer-events: none;
+  transition: transform .35s var(--spring), opacity .2s var(--ease)
+}
+
+.cat-badge::after {
+  content: "";
+  position: absolute;
+  inset: -8px
+}
+
+.cat-bin .cat-badge {
+  background-color: #3a4756;
+  background-image: linear-gradient(#fff, #fff), linear-gradient(#fff, #fff);
+  background-size: 8px 2px, 2px 8px
+}
+
+.cat-menu.editing .cat-badge {
+  transform: scale(1);
+  opacity: 1;
+  pointer-events: auto
+}
+
+/* Edit mode: icons wiggle, pills can be dragged to sort */
+.cat-menu.editing .cat-pill {
+  cursor: grab;
+  touch-action: none
+}
+
+.cat-menu.editing .cat-pill:hover {
+  transform: none
+}
+
+.cat-menu.editing .cat-pill[aria-pressed=true] {
+  box-shadow: var(--ring)
+}
+
+.cat-menu.editing .cat-pills .cat-icon {
+  animation: catWiggle .45s ease-in-out infinite alternate
+}
+
+.cat-menu.editing .cat-pills .cat-pill:nth-child(even) .cat-icon {
+  animation-direction: alternate-reverse
+}
+
+@keyframes catWiggle {
+  from {
+    transform: rotate(-5deg)
+  }
+
+  to {
+    transform: rotate(5deg)
+  }
+}
+
+.cat-pill.dragging {
+  z-index: 3;
+  scale: 1.15;
+  cursor: grabbing;
+  box-shadow: var(--ring), 0 8px 16px rgba(61, 83, 107, .35);
+  transition: scale .15s var(--ease), box-shadow .15s var(--ease)
+}
+
+/* Footer: "Edit" morphs into "Edit and sort ✓" */
+.cat-foot {
+  display: grid;
+  place-items: center;
+  min-height: 30px;
+  margin-top: 18px;
+}
+
+.cat-foot>* {
+  grid-area: 1 / 1
+}
+
+.cat-edit {
+  position: relative;
+  overflow: hidden;
+  background: var(--orange);
+  color: #fff;
+  font: 600 13px var(--head);
+  padding: 5px 24px;
+  border-radius: 999px;
+  box-shadow: inset 0 0 0 2px var(--orange);
+  transition: transform .3s var(--spring), background-color .25s var(--ease), color .25s var(--ease), opacity .25s var(--ease), visibility 0s
+}
+
+.cat-edit:hover {
+  background: #fff;
+  color: var(--orange);
+  transform: scale(1.06)
+}
+
+.cat-edit:active {
+  transform: scale(.95)
+}
+
+.cat-editing {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font: 600 12px var(--head);
+  color: var(--slate-d);
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  transform: scale(.85);
+  transition: transform .3s var(--spring), opacity .25s var(--ease), visibility 0s linear .25s
+}
+
+.cat-done {
+  width: 28px;
+  height: 20px;
+  padding: 0;
+  border-radius: 999px;
+  background: var(--orange);
+  color: #fff;
+  font-size: 12px;
+  line-height: 1;
+  display: grid;
+  place-items: center;
+  transition: transform .25s var(--spring), filter .25s var(--ease)
+}
+
+.cat-done:hover {
+  transform: scale(1.1);
+  filter: brightness(1.08)
+}
+
+.cat-menu.editing .cat-edit {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: scale(.85);
+  transition: transform .3s var(--spring), opacity .25s var(--ease), visibility 0s linear .25s
+}
+
+.cat-menu.editing .cat-editing {
+  opacity: 1;
+  visibility: visible;
+  transform: none;
+  transition: transform .3s var(--spring), opacity .25s var(--ease), visibility 0s
+}
+
+/* Removed categories slide open under the footer while editing */
+.cat-bin-wrap {
+  display: grid;
+  grid-template-rows: 0fr;
+  width: 100%;
+  opacity: 0;
+  visibility: hidden;
+  transition: grid-template-rows .4s var(--ease), opacity .25s var(--ease), visibility 0s linear .4s
+}
+
+.cat-menu.editing .cat-bin-wrap {
+  grid-template-rows: 1fr;
+  opacity: 1;
+  visibility: visible;
+  transition-delay: 0s
+}
+
+.cat-bin-clip {
+  min-height: 0;
+  overflow: hidden
+}
+
+.cat-bin {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  padding: 10px 6px 6px
+}
+
+.cat-bin:empty {
+  padding: 0
+}
+
+@media(prefers-reduced-motion:reduce) {
+  .cat-menu.editing .cat-pills .cat-icon {
+    animation: none
+  }
+}
+
+/* Header actions */
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: clamp(4px, 1vw, 10px);
+  flex: none
+}
+
+.icon-btn {
+  position: relative;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center
+}
+
+.icon-btn img {
+  width: 24px;
+  height: 24px;
+  object-fit: contain
+}
+
+.icon-btn:hover {
+  background: #f6e9d1;
+  transform: translateY(-2px)
+}
+
+.icon-btn:active,
+.search-btn:active,
+.avatar:active {
+  transform: scale(.92)
+}
+
+.wish-btn.on {
+  background: #fde3df;
+  box-shadow: inset 0 0 0 2px #e9877f
+}
+
+#cartCount {
+  position: absolute;
+  top: 0;
+  right: -2px;
+  background: var(--orange);
+  color: #fff;
+  border-radius: 999px;
+  min-width: 18px;
+  padding: 1px 5px;
+  font: 600 10px/16px var(--body);
+  text-align: center
+}
+
+#cartCount.pop {
+  animation: pop .4s var(--spring)
+}
+
+@keyframes pop {
+  0% {
+    transform: scale(.4)
+  }
+
+  100% {
+    transform: scale(1)
+  }
+}
+
+.username {
+  font-size: 11px;
+  color: var(--muted);
+  white-space: nowrap;
+  /* gap between the wishlist heart and the username */
+  margin-left: clamp(30px, 7vw, 100px)
+}
+
+.avatar {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: #e9dfcc;
+  overflow: hidden;
+  display: grid;
+  place-items: center
+}
+
+.avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block
+}
+
+.avatar:hover {
+  transform: scale(1.08);
+  box-shadow: var(--shadow)
+}
+
+/* Nav */
+.main-nav {
+  background: var(--slate);
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 0;
+  /* no right padding: the pinned Sell Now button must touch the edge or links leak past it */
+  padding: 6px 0 6px 28px;
+  overflow-x: auto;
+  /* subtle scrollbar, only appears when the links don't fit */
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, .4) rgba(255, 255, 255, .12)
+}
+
+.main-nav::-webkit-scrollbar {
+  height: 4px
+}
+
+.main-nav::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, .12);
+  border-radius: 999px;
+  margin: 0 10px
+}
+
+.main-nav::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, .4);
+  border-radius: 999px
+}
+
+.nav-item {
+  position: relative;
+  flex: none;
+  overflow: hidden;
+  color: #fff;
+  /* Change font family here */
+  font: 500 13px/1.5 'Montserrat', system-ui, sans-serif;
+  letter-spacing: .02em;
+  padding: 7px 60px;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+
+.nav-item:hover {
+  background: #fff;
+  color: var(--orange);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, .22)
+}
+
+.nav-item:active {
+  transform: scale(.95)
+}
+
+/* Seller section (nav): only the "Sell Now!" label gets the pill, pin + divider stay put */
+.nav-seller {
+  position: sticky;
+  right: 0;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex: none;
+  margin-left: auto;
+  color: #fff;
+  /* Change font family here */
+  font: 500 13px/1.5 'Montserrat', system-ui, sans-serif;
+  letter-spacing: .02em;
+  padding: 2px 28px 2px 8px;
+  background: var(--slate);
+  box-shadow: -10px 0 8px -4px var(--slate);
+  white-space: nowrap;
+}
+
+.nav-seller .loc {
+  width: 34px;
+  height: 34px;
+  object-fit: contain;
+  flex: none;
+  transition: transform .35s var(--spring)
+}
+
+.nav-seller .vr {
+  width: 1px;
+  height: 26px;
+  background: rgba(255, 255, 255, .55)
+}
+
+.nav-seller b {
+  position: relative;
+  overflow: hidden;
+  display: inline-block;
+  font: inherit;
+  letter-spacing: inherit;
+  padding: 7px 22px;
+  border-radius: 999px;
+  transition: transform .25s var(--ease), background-color .25s var(--ease), box-shadow .25s var(--ease), color .25s var(--ease)
+}
+
+.nav-seller b:hover {
+  background: #fff;
+  color: var(--orange);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, .22)
+}
+
+.nav-seller:hover .loc {
+  transform: translateY(-2px) rotate(-8deg) scale(1.12)
+}
+
+.nav-seller b:active {
+  transform: scale(.95)
+}
+
+/* Click ripple (used by buttons) */
+.rip {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 20px;
+  height: 20px;
+  margin: -10px 0 0 -10px;
+  border-radius: 50%;
+  background: currentColor;
+  opacity: .28;
+  transform: scale(0);
+  animation: ripple .55s var(--ease) forwards;
+  pointer-events: none
+}
+
+@keyframes ripple {
+  to {
+    transform: scale(14);
+    opacity: 0
+  }
+}
+
+.toast {
+  position: fixed;
+  right: 18px;
+  bottom: 18px;
+  z-index: 9999;
+  background: #2f3a46;
+  color: #fff;
+  padding: 10px 16px;
+  border-radius: 999px;
+  font-size: 13px;
+  box-shadow: 0 10px 18px rgba(0, 0, 0, .18);
+  transform: translateY(16px);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .3s var(--ease), transform .3s var(--ease)
+}
+
+.toast.show {
+  opacity: 1;
+  transform: none
+}
+
+/* Nav at in-between widths: tighter links so they fit (and scroll if they still don't) */
+@media(max-width:1200px) {
+  .main-nav {
+    padding-left: 20px
+  }
+
+  .nav-item {
+    padding: 7px 32px
+  }
+
+  .nav-seller {
+    padding-right: 20px
+  }
+}
+
+@media(max-width:900px) {
+  .main-nav {
+    padding-left: 10px
+  }
+
+  .nav-item {
+    padding: 7px 10px;
+    font-size: 12px
+  }
+
+  .nav-seller {
+    padding-right: 10px
+  }
+
+  .nav-seller b {
+    padding: 6px 14px;
+    font-size: 12px
+  }
+}
+
+@media(max-width:600px) {
+  .site-header {
+    padding: 10px;
+    gap: 8px;
+    flex-wrap: wrap
+  }
+
+  .brand {
+    font-size: 20px
+  }
+
+  .header-actions {
+    margin-left: auto;
+    gap: 2px
+  }
+
+  .username {
+    display: none
+  }
+
+  .search {
+    order: 5;
+    flex: 1 1 100%
+  }
+
+  .category-btn {
+    padding: 0 12px
+  }
+
+  .category-btn .lbl {
+    display: none
+  }
+
+  .main-nav {
+    justify-content: flex-start;
+    gap: 2px;
+    /* no right padding: the pinned Sell Now button must touch the edge or links leak past it */
+    padding: 6px 0 8px 10px;
+    scroll-snap-type: x proximity;
+    -webkit-overflow-scrolling: touch;
+    /* subtle always-visible scrollbar so people know the nav scrolls */
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255, 255, 255, .4) rgba(255, 255, 255, .12)
+  }
+
+  .main-nav::-webkit-scrollbar {
+    display: block;
+    height: 4px
+  }
+
+  .main-nav::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, .12);
+    border-radius: 999px;
+    margin: 0 10px
+  }
+
+  .main-nav::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, .4);
+    border-radius: 999px
+  }
+
+  .nav-item {
+    padding: 7px 14px;
+    font-size: 12px;
+    flex: none;
+    scroll-snap-align: center
+  }
+
+  /* Keep "Sell Now!" visible while the other links scroll underneath */
+  .nav-seller {
+    position: sticky;
+    right: 0;
+    z-index: 2;
+    margin-left: 6px;
+    padding: 2px 10px 2px 8px;
+    gap: 6px;
+    background: var(--slate);
+    box-shadow: -10px 0 8px -4px var(--slate)
+  }
+
+  .nav-seller .loc {
+    width: 28px;
+    height: 28px
+  }
+
+  .nav-seller .vr {
+    height: 22px
+  }
+
+  .nav-seller b {
+    padding: 6px 12px;
+    font-size: 12px
+  }
+}
+
+@media(prefers-reduced-motion:reduce) {
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: .01ms !important;
+    transition-duration: .01ms !important;
+    scroll-behavior: auto !important
+  }
+}
+
+/* Start zoomed out 20% on larger screens */
+@media(min-width:901px) {
+  html {
+    zoom: .8
+  }
+}

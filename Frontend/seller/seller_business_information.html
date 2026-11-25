@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Business information · Mithi Seller Center</title>
+  <meta name="description" content="Sign in, set up your shop and manage your products and orders on Mithi Seller Center.">
+  <meta name="theme-color" content="#f3eee2">
+  <meta name="color-scheme" content="light">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="images/icon.png">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="seller.css">
+</head>
+<body class="onboarding" data-page="onboarding-business" data-group="onboarding">
+
+  <div id="app-header" data-center="SET UP YOUR SHOP" data-home="seller_login.html"></div>
+  <div class="onboarding-inner">
+    <aside class="onboarding-aside">
+      <p class="aside-eyebrow">Seller onboarding</p>
+      <p class="aside-title">Your next chapter<br>starts here.</p>
+      <p class="aside-sub">A few details today.<br>A world of customers tomorrow.</p>
+
+      <nav class="steps" aria-label="Onboarding steps">
+        <ol>
+            <li>
+              <a class="step-link is-done" href="seller_application.html">
+                <span class="step-num" aria-hidden="true"><span data-icon="check"></span></span>
+                <span>
+                  <span class="step-title">Shop information</span>
+                  <span class="step-detail">Completed</span>
+                  <span class="sr-only"> (completed)</span>
+                </span>
+              </a>
+            </li>
+            <li>
+              <a class="step-link is-active" href="seller_business_information.html" aria-current="step">
+                <span class="step-num" aria-hidden="true">2</span>
+                <span>
+                  <span class="step-title">Business information</span>
+                  <span class="step-detail">Registration &amp; tax details</span>
+                  <span class="sr-only"> (current step)</span>
+                </span>
+              </a>
+            </li>
+        </ol>
+      </nav>
+
+      <div class="aside-extra">
+        <p class="know-title">Good to know</p>
+        <p class="know-text">Keep your registration documents and a valid government ID ready.</p>
+        <p class="know-privacy">Your information stays private<br>and is used for seller verification.</p>
+      </div>
+    </aside>
+
+    <main class="onboarding-main">
+      <form id="business-form" novalidate>
+        <p class="eyebrow">STEP 2 OF 2</p>
+        <h1 class="page-title">Tell us about your business</h1>
+        <div class="page-lead">
+          <p>Add your registered business details to get ready to sell.</p>
+          <p class="required-note">* Required fields</p>
+        </div>
+
+        <div class="form-stack">
+        <div class="form-banner" id="form-banner" role="alert" tabindex="-1" hidden>
+          <p class="form-banner-title"><span aria-hidden="true">! </span><span class="form-banner-title-text"></span></p>
+          <div class="form-banner-body"></div>
+        </div>
+
+        <section class="section-card" aria-labelledby="submit-business-information-title">
+          <h2 id="submit-business-information-title">Submit business information</h2>
+          <p class="section-desc">Choose when you’d like to provide your business registration details.</p>
+          <div class="section-body">
+          <fieldset class="radio-group">
+            <legend class="sr-only">Submission timing</legend>
+            <div class="radio-options">
+            <label class="radio-card w-200-sm">
+              <input class="sr-only" type="radio" name="timing" value="now" checked>
+              <span class="radio-dot" aria-hidden="true"></span>
+              <span class="radio-label">Submit Now</span>
+            </label>
+            <label class="radio-card w-200-sm">
+              <input class="sr-only" type="radio" name="timing" value="later">
+              <span class="radio-dot" aria-hidden="true"></span>
+              <span class="radio-label">Submit Later</span>
+            </label>
+              <p class="radio-aside">Complete verification before you start selling.</p>
+            </div>
+          </fieldset>
+          </div>
+        </section>
+
+          <div class="form-stack flush" id="business-details">
+        <section class="section-card" aria-labelledby="entity-information-title">
+          <h2 id="entity-information-title">Entity information</h2>
+          <p class="section-desc">Use the details exactly as they appear on your registration documents.</p>
+          <div class="section-body">
+          <fieldset class="radio-group">
+            <legend>Seller type *</legend>
+            <div class="radio-options">
+            <label class="radio-card type-card">
+              <input class="sr-only" type="radio" name="sellerType" value="sole" checked>
+              <span class="radio-dot" aria-hidden="true"></span>
+              <span class="radio-label">Sole Proprietorship</span>
+            </label>
+            <label class="radio-card type-card">
+              <input class="sr-only" type="radio" name="sellerType" value="corp">
+              <span class="radio-dot" aria-hidden="true"></span>
+              <span class="radio-label">Corporation / Partnership / Cooperative</span>
+            </label>
+            <label class="radio-card type-card">
+              <input class="sr-only" type="radio" name="sellerType" value="opc">
+              <span class="radio-dot" aria-hidden="true"></span>
+              <span class="radio-label">One Person Corporation</span>
+            </label>
+            </div>
+          </fieldset>
+
+            <p class="sub-heading mt-6">Individual registered name</p>
+            <div class="form-grid g-sm-2 g-lg-4 mt-3">
+        <div class="field" data-field="lastName">
+          <label class="field-label" for="lastName">Last name *</label>
+          <input class="control" id="lastName" name="lastName" type="text" placeholder="Last name" autocomplete="family-name">
+          <p class="field-error" id="lastName-error" hidden></p>
+        </div>
+        <div class="field" data-field="firstName">
+          <label class="field-label" for="firstName">First name *</label>
+          <input class="control" id="firstName" name="firstName" type="text" placeholder="First name" autocomplete="given-name">
+          <p class="field-error" id="firstName-error" hidden></p>
+        </div>
+        <div class="field" data-field="middleName">
+          <label class="field-label" for="middleName">Middle name</label>
+          <input class="control" id="middleName" name="middleName" type="text" placeholder="Middle name" autocomplete="additional-name">
+        </div>
+        <div class="field" data-field="suffix">
+          <label class="field-label" for="suffix">Suffix</label>
+          <div class="select-wrap"><select class="control" id="suffix" name="suffix"><option value="">Select suffix</option></select><span data-icon="chevron-down"></span></div>
+        </div>
+            </div>
+
+        <div class="field mt-5" data-field="businessName">
+          <label class="field-label" for="businessName">Business name / Trade name *</label>
+          <input class="control" id="businessName" name="businessName" type="text" placeholder="Enter your registered business or trade name">
+          <p class="field-error" id="businessName-error" hidden></p>
+        </div>
+
+            <p class="sub-heading mt-7">General location</p>
+            <div class="form-grid g-sm-2 g-lg-4 mt-3">
+        <div class="field" data-field="region">
+          <label class="field-label" for="region">Region *</label>
+          <div class="select-wrap"><select class="control" id="region" name="region"><option value="">Select region</option></select><span data-icon="chevron-down"></span></div>
+          <p class="field-error" id="region-error" hidden></p>
+        </div>
+        <div class="field" data-field="province">
+          <label class="field-label" for="province">Province *</label>
+          <div class="select-wrap"><select class="control" id="province" name="province" disabled><option value="">Select province</option></select><span data-icon="chevron-down"></span></div>
+          <p class="field-error" id="province-error" hidden></p>
+        </div>
+        <div class="field" data-field="city">
+          <label class="field-label" for="city">Municipality / City *</label>
+          <div class="select-wrap"><select class="control" id="city" name="city" disabled><option value="">Select municipality</option></select><span data-icon="chevron-down"></span></div>
+          <p class="field-error" id="city-error" hidden></p>
+        </div>
+        <div class="field" data-field="barangay">
+          <label class="field-label" for="barangay">Barangay *</label>
+          <div class="select-wrap"><select class="control" id="barangay" name="barangay" disabled><option value="">Select barangay</option></select><span data-icon="chevron-down"></span></div>
+          <p class="field-error" id="barangay-error" hidden></p>
+        </div>
+            </div>
+
+            <div class="form-grid g-lg-4 mt-5">
+        <div class="field lg-span-3" data-field="address">
+          <label class="field-label" for="address">Registered address *</label>
+          <input class="control" id="address" name="address" type="text" placeholder="Unit no., building, street, and subdivision" autocomplete="street-address">
+          <p class="field-error" id="address-error" hidden></p>
+        </div>
+        <div class="field" data-field="zip">
+          <label class="field-label" for="zip">Zip code *</label>
+          <input class="control" id="zip" name="zip" type="text" placeholder="e.g. 1000" inputmode="numeric" maxlength="4" autocomplete="postal-code">
+          <p class="field-error" id="zip-error" hidden></p>
+        </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="section-card" aria-labelledby="business-documents-title">
+          <h2 id="business-documents-title">Business documents</h2>
+          <p class="section-desc">Upload clear, complete documents. All four corners should be visible.</p>
+          <div class="section-body">
+            <div class="form-grid g-md-2">
+        <div class="field" data-field="docType">
+          <label class="field-label" for="docType">Primary business document type *</label>
+          <div class="select-wrap"><select class="control" id="docType" name="docType"><option value="">Select document type</option></select><span data-icon="chevron-down"></span></div>
+          <p class="field-error" id="docType-error" hidden></p>
+        </div>
+        <div class="field" data-field="idType">
+          <label class="field-label" for="idType">Government ID type *</label>
+          <div class="select-wrap"><select class="control" id="idType" name="idType"><option value="">Select government ID type</option></select><span data-icon="chevron-down"></span></div>
+          <p class="field-error" id="idType-error" hidden></p>
+        </div>
+        <div class="field" data-field="primaryDoc">
+          <label class="field-label" for="primaryDoc">Primary business document *</label>
+          <label class="upload" for="primaryDoc">
+            <input class="sr-only" id="primaryDoc" type="file" accept=".jpg,.jpeg,.png,.pdf">
+            <span class="upload-main">
+              <span data-icon="arrow-up"></span>
+              <span class="upload-text">
+                <span class="upload-title">Click to upload</span>
+                <span class="upload-sub">or drag and drop</span>
+              </span>
+            </span>
+            <span class="upload-hint">JPG, JPEG, PNG or PDF · Maximum 20 MB</span>
+          </label>
+          <p class="field-error" id="primaryDoc-error" hidden></p>
+        </div>
+        <div class="field" data-field="idFront">
+          <label class="field-label" for="idFront">Government ID (w/ Photo) — Front *</label>
+          <label class="upload" for="idFront">
+            <input class="sr-only" id="idFront" type="file" accept=".jpg,.jpeg,.png,.pdf">
+            <span class="upload-main">
+              <span data-icon="arrow-up"></span>
+              <span class="upload-text">
+                <span class="upload-title">Click to upload</span>
+                <span class="upload-sub">or drag and drop</span>
+              </span>
+            </span>
+            <span class="upload-hint">JPG, JPEG, PNG or PDF · Maximum 20 MB</span>
+          </label>
+          <p class="field-error" id="idFront-error" hidden></p>
+        </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="section-card" aria-labelledby="business-contact-verification-title">
+          <h2 id="business-contact-verification-title">Business contact &amp; verification</h2>
+          <p class="section-desc">We’ll send a one-time password (OTP) to verify each contact detail.</p>
+          <div class="section-body">
+            <div class="form-grid g-md-2">
+        <div class="field" data-field="email">
+          <label class="field-label" for="email">Business email *</label>
+          <div class="otp-row">
+            <div class="grow"><input class="control" id="email" name="email" type="email" placeholder="name@business.com" autocomplete="email"></div>
+            <button type="button" class="btn-otp" id="emailOtpBtn" disabled>Send OTP</button>
+          </div>
+          <p class="field-error" id="email-error" hidden></p>
+          <p class="field-note" id="email-note" role="status" hidden>A 6-digit code was sent to your email.</p>
+        </div>
+        <div class="field" data-field="phone">
+          <label class="field-label" for="phone">Business phone number *</label>
+          <div class="otp-row">
+            <div class="grow"><div class="control phone-control"><span class="phone-prefix" aria-hidden="true">+63</span><span class="phone-sep" aria-hidden="true"></span><input id="phone" name="phone" type="tel" inputmode="numeric" autocomplete="tel-national" placeholder="9XX XXX XXXX"></div></div>
+            <button type="button" class="btn-otp" id="phoneOtpBtn" disabled>Send OTP</button>
+          </div>
+          <p class="field-error" id="phone-error" hidden></p>
+          <p class="field-note" id="phone-note" role="status" hidden>A 6-digit code was sent to your phone.</p>
+        </div>
+        <div class="field" data-field="emailOtp">
+          <label class="field-label" for="emailOtp">Business email verification *</label>
+          <input class="control" id="emailOtp" name="emailOtp" type="text" placeholder="Enter 6-digit email OTP" inputmode="numeric" autocomplete="one-time-code">
+          <p class="field-error" id="emailOtp-error" hidden></p>
+        </div>
+        <div class="field" data-field="phoneOtp">
+          <label class="field-label" for="phoneOtp">Business phone number verification *</label>
+          <input class="control" id="phoneOtp" name="phoneOtp" type="text" placeholder="Enter 6-digit SMS OTP" inputmode="numeric" autocomplete="one-time-code">
+          <p class="field-error" id="phoneOtp-error" hidden></p>
+        </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="section-card" aria-labelledby="tax-information-title">
+          <h2 id="tax-information-title">Tax information</h2>
+          <p class="section-desc">Provide your tax details as registered with the Bureau of Internal Revenue.</p>
+          <div class="section-body">
+            <div class="form-grid g-md-2">
+        <div class="field" data-field="tin">
+          <label class="field-label" for="tin">Taxpayer Identification Number (TIN) *</label>
+          <input class="control" id="tin" name="tin" type="text" placeholder="999-999-999-000" inputmode="numeric">
+          <p class="field-error" id="tin-error" hidden></p>
+        </div>
+            </div>
+            <p class="help-text">Your 9-digit TIN and 3 to 5 digit branch code. Please use &ldquo;000&rdquo; as your branch code if you don&apos;t have one (e.g. 999-999-999-000).</p>
+
+          <fieldset class="radio-group mt-8">
+            <legend>Value Added Tax registration status *</legend>
+            <div class="radio-options">
+            <label class="radio-card w-200-sm">
+              <input class="sr-only" type="radio" name="vat" value="vat" checked>
+              <span class="radio-dot" aria-hidden="true"></span>
+              <span class="radio-label">VAT Registered</span>
+            </label>
+            <label class="radio-card w-200-sm">
+              <input class="sr-only" type="radio" name="vat" value="non-vat">
+              <span class="radio-dot" aria-hidden="true"></span>
+              <span class="radio-label">Non-VAT Registered</span>
+            </label>
+            </div>
+          </fieldset>
+
+            <div class="form-grid g-md-2 mt-6">
+        <div class="field" data-field="birCert">
+          <label class="field-label" for="birCert">BIR Certificate of Registration *</label>
+          <label class="upload" for="birCert">
+            <input class="sr-only" id="birCert" type="file" accept=".jpg,.jpeg,.png,.pdf">
+            <span class="upload-main">
+              <span data-icon="arrow-up"></span>
+              <span class="upload-text">
+                <span class="upload-title">Click to upload</span>
+                <span class="upload-sub">or drag and drop</span>
+              </span>
+            </span>
+            <span class="upload-hint">JPG, JPEG, PNG or PDF · Maximum 20 MB</span>
+          </label>
+          <p class="field-error" id="birCert-error" hidden></p>
+        </div>
+        <div class="field" data-field="birSeal">
+          <label class="field-label" for="birSeal">BIR Registration Seal Badge (Optional)</label>
+          <label class="upload" for="birSeal">
+            <input class="sr-only" id="birSeal" type="file" accept=".jpg,.jpeg,.png,.pdf">
+            <span class="upload-main">
+              <span data-icon="arrow-up"></span>
+              <span class="upload-text">
+                <span class="upload-title">Click to upload</span>
+                <span class="upload-sub">or drag and drop</span>
+              </span>
+            </span>
+            <span class="upload-hint">JPG, JPEG, PNG or PDF · Maximum 20 MB</span>
+          </label>
+          <p class="field-error" id="{id}-error" hidden></p>
+        </div>
+            </div>
+
+          <fieldset class="radio-group mt-7">
+            <legend>Submit Sworn Declaration *</legend>
+            <div class="radio-options">
+            <label class="radio-card w-132">
+              <input class="sr-only" type="radio" name="sworn" value="yes">
+              <span class="radio-dot" aria-hidden="true"></span>
+              <span class="radio-label">Yes</span>
+            </label>
+            <label class="radio-card w-132">
+              <input class="sr-only" type="radio" name="sworn" value="no" checked>
+              <span class="radio-dot" aria-hidden="true"></span>
+              <span class="radio-label">No</span>
+            </label>
+            </div>
+          </fieldset>
+            <p class="notice">Submission of Sworn Declaration is required to be exempted from withholding tax if your total annual gross remittance is less than or equal to ₱500,000.00.</p>
+          </div>
+        </section>
+          </div>
+
+        <section class="section-card no-desc" aria-labelledby="agreement-title">
+          <h2 id="agreement-title">Agreement</h2>
+          <div class="section-body">
+            <div data-field="agree">
+              <label class="checkbox-row">
+                <input type="checkbox" id="agree" name="agree">
+                <span>I confirm that the information provided is accurate and I agree to the <a class="link-strong" href="#terms">Terms of Service</a> and <a class="link-strong" href="#privacy">Privacy Policy</a>.</span>
+              </label>
+              <p class="field-error agree-error" id="agree-error" hidden></p>
+            </div>
+          </div>
+        </section>
+        </div>
+
+        <div class="form-footer">
+          <p class="form-footer-note" id="footer-note">Review your information before you submit.</p>
+          <div class="form-footer-actions">
+            <a class="back-link" href="seller_application.html"><span data-icon="arrow-left"></span>Back</a>
+            <button type="submit" class="btn-primary btn-grow">Submit</button>
+          </div>
+        </div>
+      </form>
+    </main>
+  </div>
+  
+  <script src="seller.js"></script>
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Orders · Mithi Seller Center</title>
+  <meta name="description" content="Sign in, set up your shop and manage your products and orders on Mithi Seller Center.">
+  <meta name="theme-color" content="#f3eee2">
+  <meta name="color-scheme" content="light">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="images/icon.png">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="seller.css">
+</head>
+<body class="seller-body" data-page="orders" data-group="seller">
+
+  <div id="app-header" data-center="Store’s Name* Dashboard" data-home="seller_dashboard.html" data-fixed></div>
+  <div id="seller-sidebar" data-active="orders"></div>
+
+  <div class="seller-content">
+    <main class="seller-main">
+      <section class="page-banner">
+        <div>
+          <h1>Orders mo, Sis</h1>
+          <p>Keep every order moving, from your shop to their doorstep.</p>
+        </div>
+        <div class="banner-total">
+          <p class="label" id="valid-label"></p>
+          <p class="value" id="valid-total"></p>
+        </div>
+      </section>
+      <section class="panel flex-col min-480">
+        <div class="toolbar">
+        <div class="filter-tabs" id="orders-tabs" role="group" aria-label="Filter orders">
+          <button type="button" class="filter-tab" data-value="All" aria-pressed="true">All orders</button>
+          <button type="button" class="filter-tab" data-value="Pending" aria-pressed="false">Pending</button>
+          <button type="button" class="filter-tab" data-value="Complete" aria-pressed="false">Complete</button>
+          <button type="button" class="filter-tab" data-value="Cancelled" aria-pressed="false">Cancelled</button>
+        </div>
+        <label class="search-box">
+          <span data-icon="search"></span>
+          <span class="sr-only">Search orders</span>
+          <input type="search" id="orders-search" placeholder="Search orders">
+        </label>
+        </div>
+        <div class="table-scroll mt-20">
+          <table class="data-table min-640">
+            <thead>
+              <tr><th>Orders</th><th>Date</th><th>Buyer</th><th>Item</th><th>Total</th><th>Status</th></tr>
+            </thead>
+            <tbody id="orders-body"></tbody>
+          </table>
+          <p class="table-empty" id="orders-empty" hidden>No orders here yet.</p>
+        </div>
+        <p class="table-count" id="orders-count"></p>
+      </section>
+    </main>
+    <div id="seller-footer"></div>
+  </div>
+  
+  <script src="seller.js"></script>
+</body>
+</html>

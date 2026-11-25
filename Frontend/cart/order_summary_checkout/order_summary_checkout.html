@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- The title is updated by order_summary_checkout.js to match the current screen -->
+  <title>Mithi - Cart</title>
+  <link rel="icon" type="image/png" href="pictures/icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Montserrat+Alternates:ital,wght@0,400;0,500;0,600;0,700;0,800;1,600;1,700;1,800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="order_summary_checkout.css">
+  <link rel="stylesheet" href="../../shared/nav_bar.css">
+</head>
+<body>
+
+  <div id="navbar-container"></div>
+
+  <!-- ===== Page content (filled in by order_summary_checkout.js) · logged-in user =====
+       Screens are chosen with the URL hash:
+         order_summary_checkout.html         → Order Summary (default)
+         order_summary_checkout.html#stock      → Stock changed
+         order_summary_checkout.html#voucher    → Stock changed + voucher applied
+         order_summary_checkout.html#empty      → Empty cart -->
+  <main id="page">
+    <div id="cartApp" class="cart-app" aria-live="polite"></div>
+  </main>
+
+  <script src="../../shared/nav_bar.js"></script>
+  <script src="order_summary_checkout.js"></script>
+  <script src="../../shared/nav_loader.js"></script>
+</body>
+</html>

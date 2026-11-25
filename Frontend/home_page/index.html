@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mithi - Home Page</title>
+  <link rel="icon" type="image/png" href="pictures/icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Montserrat+Alternates:ital,wght@0,400;0,500;0,600;0,700;0,800;1,600;1,700;1,800&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="../shared/nav_bar.css">
+</head>
+
+
+<body>
+
+  <div id="navbar-container"></div>
+
+  <main>
+    <section class="promos">
+      <div class="hero"><img src="pictures/HEADER1.png" alt="Get that bag, sis! Mithi banner"></div>
+      <div class="side-promos">
+        <div class="promo"><img src="pictures/HEADER2.png" alt="11.11 Flash Sale"></div>
+        <div class="promo"><img src="pictures/HEADER3.png" alt="Free and discounted shipping"></div>
+      </div>
+    </section>
+
+    <section class="products-section" id="topProductsSection">
+      <h1 id="topTitle">Top Products</h1>
+      <div class="product-panel">
+        <div class="panel-top"><a href="#" class="see-all">See All ›</a></div>
+        <button type="button" class="arrow prev" aria-label="Previous category" onclick="moveTop(-1)">‹</button>
+        <div class="top-cards" id="topCards" aria-live="polite"></div>
+        <button type="button" class="arrow next" aria-label="Next category" onclick="moveTop(1)">›</button>
+      </div>
+    </section>
+
+    <section class="flash-wrap" id="flashSection">
+      <div class="flash">
+        <div class="flash-title">
+          <span>
+            <img src="pictures/Leaf Percent Discount.svg">
+            <span class="flash-text"><em>FLASH</em><span class="regular-sales">SALES</span></span>
+          </span>
+          <a href="#" class="see-all">See All ›</a>
+        </div>
+        <div class="carousel">
+          <div class="flash-products" id="flashProducts"></div>
+        </div>
+        <button type="button" class="arrow left" aria-label="Previous deals" onclick="moveFlash(-1)">‹</button>
+        <button type="button" class="arrow right" aria-label="Next deals" onclick="moveFlash(1)">›</button>
+      </div>
+    </section>
+
+    <section class="daily">
+      <h2 class="daily-title" aria-label="Tarsis’ Product of the Day!">
+        <svg viewBox="0 0 1440 150" aria-hidden="true" focusable="false">
+          <defs><path id="dailyCurve" d="M0 56C40 52 90 47 140 47C280 47 280 105 420 105C560 105 560 47 700 47C840 47 840 105 980 105C1120 105 1120 47 1260 47C1340 47 1400 52 1440 56" /></defs>
+          <text><textPath href="#dailyCurve" startOffset="50%" text-anchor="middle">Tarsis’ Product of the Day!</textPath></text>
+        </svg>
+      </h2>
+      <div class="daily-content">
+        <img class="laptop" src="pictures/LAPTOP.png" alt="Lenovo IdeaPad Slim 5 laptop">
+        <div class="details">
+          <div class="price-tag"><strong>₱19,000</strong><small>10k sold</small></div>
+          <h3>Lenovo IdeaPad Slim<br>5 14Q8X9 14”</h3>
+          <p class="specs">Snapdragon X Plus | 16GB RAM | 1TB SSD - 10C</p>
+          <button type="button" class="buy">Buy it here!</button>
+        </div>
+        <img class="mascot" src="pictures/Tarsis.png" alt="Tarsis mascot">
+      </div>
+    </section>
+
+    <div class="discover-title">DAILY DISCOVER,<span class="sis"> SIS!</span></div>
+    <section class="discover-grid" id="discoverProducts" aria-live="polite"></section>
+  </main>
+
+  
+
+  <footer>
+    <div class="footer-columns">
+      <div class="footer-about">
+        <div class="footer-logo"><img src="pictures/mithi-circlelogo 1.png" alt=""><span>Mithi</span></div>
+        <p>Everything you need, all in one place. Browse, discover, and shop with Mithi.</p>
+      </div>
+      <nav aria-label="About Mithi">
+        <h3>ABOUT MITHI</h3>
+        <ul>
+          <li><a href="#">About Us</a></li>
+          <li><a href="#">Categories</a></li>
+          <li><a href="#">Sellers</a></li>
+          <li><a href="#">Regions</a></li>
+          <li><a href="#">Promotions</a></li>
+          <!-- Update the href attributes below -->
+          <li><a href="../terms/index.html#terms">Terms &amp; Conditions</a></li>
+          <li><a href="../terms/index.html#privacy">Privacy Policy</a></li>
+        </ul>
+      </nav>
+      <nav id="customerService" aria-label="Customer service">
+        <h3>CUSTOMER SERVICE</h3>
+        <ul>
+          <li><a href="#">Help Center</a></li>
+          <li><a href="#">Orders</a></li>
+          <li><a href="../terms/index.html#shipping">Shipping &amp; Delivery</a></li>
+          <li><a href="../terms/index.html#return">Returns &amp; Refunds</a></li>
+          <li><a href="#">Complaints</a></li>
+        </ul>
+      </nav>
+      <div>
+        <h3>ADDRESS</h3>
+        <address>Olongapo City Sports Complex<br>Donor Street, East Tapinac,<br>Olongapo City, Zambales,<br>2200,
+          Philippines</address>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Mithi. All Rights Reserved.</span>
+      <div class="social">
+        <a href="#" aria-label="Phone"><img src="pictures/phone.png" alt=""></a>
+        <a href="#" aria-label="Instagram"><img src="pictures/ig.png" alt=""></a>
+        <a href="#" aria-label="Facebook"><img src="pictures/fb.png" alt=""></a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../shared/nav_bar.js"></script>
+  <script src="script.js"></script>
+  <script src="../shared/nav_loader.js"></script>
+</body>
+
+</html>

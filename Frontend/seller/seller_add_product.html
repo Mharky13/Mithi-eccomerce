@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Add product · Mithi Seller Center</title>
+  <meta name="description" content="Sign in, set up your shop and manage your products and orders on Mithi Seller Center.">
+  <meta name="theme-color" content="#f3eee2">
+  <meta name="color-scheme" content="light">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="images/icon.png">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="seller.css">
+</head>
+<body class="seller-body" data-page="product-new" data-group="seller">
+
+  <div id="app-header" data-center="Store’s Name* Dashboard" data-home="seller_dashboard.html" data-fixed></div>
+  <div id="seller-sidebar" data-active="products"></div>
+
+  <div class="seller-content">
+    <main class="seller-main">
+      <form class="pp" id="product-form" novalidate>
+
+        <nav class="pp-crumbs" aria-label="Breadcrumb">
+          <a href="seller_dashboard.html">Home</a><span aria-hidden="true">/</span>
+          <a href="seller_inventory.html">Products</a><span aria-hidden="true">/</span>
+          <span aria-current="page">Add product</span>
+        </nav>
+
+        <div class="form-banner" id="form-banner" tabindex="-1" role="alert" hidden>
+          <p class="form-banner-title"><span class="form-banner-title-text"></span></p>
+          <div class="form-banner-body"></div>
+        </div>
+
+        <!-- ================= Hero: gallery + product info ================= -->
+        <section class="pp-card pp-hero" aria-label="Product basics">
+          <div class="pp-gallery">
+            <div class="field" data-field="cover">
+              <div class="pp-stage" id="stage"></div>
+              <div class="pp-thumbs" id="thumbs" role="group" aria-label="Product photos"></div>
+              <p class="pp-photo-hint">Slot 1 is your cover. Add up to 3 photo variations. JPG, PNG or WEBP, 5 MB each.</p>
+              <p class="field-error" id="cover-error" hidden></p>
+              <input class="sr-only" type="file" id="photo-input" accept="image/jpeg,image/png,image/webp" multiple tabindex="-1" aria-label="Upload product photos">
+            </div>
+          </div>
+
+          <div class="pp-info">
+            <p class="pp-eyebrow">Curated finds, close to home</p>
+
+            <div class="field pp-name-field" data-field="name">
+              <label class="sr-only" for="name">Product name</label>
+              <input class="pp-title-input" id="name" name="name" type="text" maxlength="80" placeholder="Product Name" autocomplete="off">
+              <p class="field-error" id="name-error" hidden></p>
+            </div>
+
+            <div class="field pp-desc-field" data-field="description">
+              <label class="sr-only" for="description">Product description</label>
+              <textarea class="control pp-desc" id="description" name="description" maxlength="400" rows="3" placeholder="Discover the details, choose your preferred option, and make it yours. Have a question? Reach out to the seller before ordering."></textarea>
+              <div class="pp-desc-meta">
+                <p class="field-error" id="description-error" hidden></p>
+                <span class="pp-count" id="description-count">0/400</span>
+              </div>
+            </div>
+
+            <p class="pp-rating"><span class="pp-star" aria-hidden="true"><span data-icon="star"></span></span><span class="pp-rating-num">New</span><span class="pp-rating-label">Customer rating</span></p>
+
+            <p class="pp-price" id="price-range" aria-live="polite">₱0</p>
+
+            <div class="pp-row-label">Choose a variant</div>
+            <button type="button" class="pp-select" id="jump-variants"><span id="variant-summary">1 option</span><span data-icon="chevron-down"></span></button>
+
+            <div class="pp-qty-row">
+              <span class="pp-row-label" id="qty-label-hero">Quantity</span>
+              <div class="pp-stepper" role="group" aria-labelledby="qty-label-hero">
+                <button type="button" data-step="-1" aria-label="Decrease stock"><span data-icon="minus"></span></button>
+                <input type="text" inputmode="numeric" class="pp-stock-input" aria-label="Stock quantity" value="1">
+                <button type="button" data-step="1" aria-label="Increase stock"><span data-icon="plus"></span></button>
+              </div>
+            </div>
+
+            <div class="pp-actions">
+              <button type="button" class="pp-btn-outline" id="save-draft">Save as draft</button>
+              <button type="submit" class="pp-btn-solid" id="publish">Publish product</button>
+            </div>
+            <p class="pp-fineprint">Review your listing before publishing.</p>
+          </div>
+        </section>
+
+        <!-- ================= Shop card ================= -->
+        <section class="pp-card pp-shop" aria-label="Your shop">
+          <div>
+            <p class="pp-shop-name" id="shop-name">StoreNiPare</p>
+            <p class="pp-shop-status">Active</p>
+            <div class="pp-shop-actions">
+              <a class="pp-btn-sm" href="seller_store_settings.html">Store settings</a>
+              <a class="pp-btn-sm" href="seller_store_settings.html">View shop</a>
+            </div>
+          </div>
+          <div>
+            <h2 class="pp-shop-title">Shop with a little more confidence</h2>
+            <p class="pp-shop-text">Add clear photos, honest details, shipping and the options that are right for shoppers, so they know what to expect before they order.</p>
+          </div>
+        </section>
+
+        <!-- ================= Specs + details | highlights ================= -->
+        <div class="pp-split">
+          <section class="pp-card pp-specs" aria-label="Product specifications">
+            <h2 class="pp-h2">Product Specifications</h2>
+            <div class="pp-spec-list">
+              <div class="pp-spec">
+                <label class="pp-spec-label" for="category">Category</label>
+                <div class="field" data-field="category">
+                  <div class="select-wrap"><select class="control pp-control" id="category" name="category"><option value="">Choose a category</option></select><span data-icon="chevron-down"></span></div>
+                  <p class="field-error" id="category-error" hidden></p>
+                </div>
+              </div>
+              <div class="pp-spec">
+                <label class="pp-spec-label" for="type">Product Type</label>
+                <div class="field" data-field="type">
+                  <input class="control pp-control" id="type" name="type" type="text" maxlength="40" placeholder="e.g. Desktop computer">
+                  <p class="field-error" id="type-error" hidden></p>
+                </div>
+              </div>
+              <div class="pp-spec">
+                <label class="pp-spec-label" for="material">Material</label>
+                <div class="field" data-field="material">
+                  <input class="control pp-control" id="material" name="material" type="text" maxlength="60" placeholder="e.g. Steel, cotton, ceramic">
+                  <p class="field-error" id="material-error" hidden></p>
+                </div>
+              </div>
+              <div class="pp-spec">
+                <label class="pp-spec-label" for="sku">SKU#</label>
+                <div class="field" data-field="sku">
+                  <input class="control pp-control" id="sku" name="sku" type="text" maxlength="20" placeholder="Leave blank to auto-generate">
+                  <p class="field-error" id="sku-error" hidden></p>
+                </div>
+              </div>
+              <div class="pp-spec">
+                <label class="pp-spec-label" for="reorderLevel">Reorder level</label>
+                <div class="field" data-field="reorderLevel">
+                  <input class="control pp-control" id="reorderLevel" name="reorderLevel" type="text" inputmode="numeric" placeholder="Alert me when stock drops to">
+                  <p class="field-error" id="reorderLevel-error" hidden></p>
+                </div>
+              </div>
+              <div class="pp-spec">
+                <label class="pp-spec-label" for="reorderQty">Reorder quantity</label>
+                <div class="field" data-field="reorderQty">
+                  <input class="control pp-control" id="reorderQty" name="reorderQty" type="text" inputmode="numeric" placeholder="How many to restock">
+                  <p class="field-error" id="reorderQty-error" hidden></p>
+                </div>
+              </div>
+            </div>
+
+            <h2 class="pp-h2 pp-h2-gap">Product Details</h2>
+            <div class="pp-detail">
+              <label class="pp-h3" for="details">A closer look before you choose</label>
+              <textarea class="control pp-area" id="details" name="details" maxlength="800" rows="4" placeholder="Use the gallery to explore the product, then choose your preferred variant. For exact dimensions, materials, compatibility or care instructions, send the seller a message."></textarea>
+            </div>
+            <div class="pp-detail">
+              <label class="pp-h3" for="notes">Before you order</label>
+              <textarea class="control pp-area" id="notes" name="notes" maxlength="600" rows="4" placeholder="One point per line, for example:&#10;Check the selected variant and quantity.&#10;Review shipping and payment details at checkout."></textarea>
+            </div>
+          </section>
+
+          <aside class="pp-side" aria-label="Highlights and shopper settings">
+            <section class="pp-card pp-high">
+              <div class="pp-high-main">
+                <h2 class="pp-big-title">Highlights</h2>
+                <p class="pp-big-num"><span id="tag-count">0</span><span class="pp-big-of">/3</span></p>
+                <p class="pp-small">Tags added</p>
+              </div>
+              <div class="pp-tags" role="group" aria-label="Product tags">
+                <label class="sr-only" for="tag-1">Tag 1</label><input class="pp-tag tone-1" id="tag-1" maxlength="14" placeholder="Sturdy" autocomplete="off">
+                <label class="sr-only" for="tag-2">Tag 2</label><input class="pp-tag tone-2" id="tag-2" maxlength="14" placeholder="Longlasting" autocomplete="off">
+                <label class="sr-only" for="tag-3">Tag 3</label><input class="pp-tag tone-3" id="tag-3" maxlength="14" placeholder="Efficient" autocomplete="off">
+              </div>
+            </section>
+
+            <div class="pp-prefs">
+              <p class="pp-prefs-title">Shopper settings</p>
+              <div class="pp-chip-list" id="prefs" role="group" aria-label="Shopper settings"></div>
+            </div>
+          </aside>
+        </div>
+
+        <!-- ================= Variants (the "Choose your variant" panel) ================= -->
+        <section class="pp-variants" id="variants" aria-labelledby="variants-title">
+          <div class="pp-var-main">
+            <p class="pp-eyebrow">Your pick, your way</p>
+            <h2 class="pp-underline" id="variants-title">Choose your variant</h2>
+            <p class="pp-sub">Find the option that is right for you.</p>
+
+            <div class="pp-card pp-preview">
+              <div class="pp-preview-img" id="preview-img"></div>
+              <div>
+                <p class="pp-preview-name" id="preview-name">Product Name</p>
+                <p class="pp-preview-price" id="preview-price">₱0</p>
+                <p class="pp-preview-text">Select an option below to continue.</p>
+              </div>
+            </div>
+
+            <h3 class="pp-h3-lg">Available options</h3>
+            <p class="pp-tiny">Add up to 4 options, for example a single item or a bundle.</p>
+            <div class="pp-options" id="options"></div>
+          </div>
+
+          <div class="pp-var-side">
+            <div class="pp-var-qty">
+              <h3 class="pp-h3-lg" id="qty-label">Quantity</h3>
+              <div class="pp-stepper pp-stepper-white" role="group" aria-labelledby="qty-label">
+                <button type="button" data-step="-1" aria-label="Decrease stock"><span data-icon="minus"></span></button>
+                <input type="text" inputmode="numeric" class="pp-stock-input" aria-label="Stock quantity" value="1">
+                <button type="button" data-step="1" aria-label="Increase stock"><span data-icon="plus"></span></button>
+              </div>
+            </div>
+
+            <div class="pp-check">
+              <p class="pp-check-title">A little check before publishing</p>
+              <p class="pp-check-text">Confirm your photos, options and stock.<br>Need more details? Ask Seller Support before publishing.</p>
+              <ul class="pp-checklist" id="checklist"></ul>
+            </div>
+
+            <p class="pp-selected" id="selected-line" aria-live="polite">Selected: Single item · Stock 1</p>
+            <button type="submit" class="pp-confirm" id="confirm">Confirm selection</button>
+          </div>
+        </section>
+
+        <!-- ================= Footer banner ================= -->
+        <section class="pp-banner">
+          <h2>Good finds. Real people. A little closer to home.</h2>
+          <p>Need a hand with your listing? Mithi Seller Support is here to help.</p>
+        </section>
+      </form>
+    </main>
+  </div>
+
+  <!-- ================= Notification ================= -->
+  <div class="pp-overlay" id="notify" hidden>
+    <div class="pp-notify" role="dialog" aria-modal="true" aria-labelledby="notify-title" tabindex="-1">
+      <button type="button" class="pp-notify-close" id="notify-close" aria-label="Close"><span data-icon="x"></span></button>
+      <p class="pp-notify-eyebrow">Product update</p>
+      <div class="pp-notify-badge" aria-hidden="true"><span data-icon="check"></span></div>
+      <h2 class="pp-underline pp-notify-title" id="notify-title">Product added, Sis!</h2>
+      <p class="pp-notify-text" id="notify-text">Your listing is live and ready for shoppers.</p>
+      <div class="pp-card pp-notify-item">
+        <div class="pp-notify-thumb" id="notify-thumb"></div>
+        <div>
+          <p class="pp-notify-name" id="notify-name">Product Name</p>
+          <p class="pp-notify-note" id="notify-note">Your product is in your catalog.</p>
+        </div>
+      </div>
+      <a class="pp-notify-primary" href="seller_inventory.html" id="notify-view">View products</a>
+      <button type="button" class="pp-notify-secondary" id="notify-another">Add another product</button>
+    </div>
+  </div>
+  
+  <script src="seller.js"></script>
+</body>
+</html>

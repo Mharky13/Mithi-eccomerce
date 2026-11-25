@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mithi - Regional Finds</title>
+  <link rel="icon" type="image/png" href="pictures/icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Montserrat+Alternates:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../shared/nav_bar.css">
+  <link rel="stylesheet" href="regional_finds.css">
+</head>
+<body>
+  <div id="navbar-container"></div>
+  <main class="rf-page">
+    <section class="rf-hero">
+      <h1>Mithi Regional Finds</h1>
+      <p>Fresh finds from local shops, with a story in every region.</p>
+    </section>
+    <section class="rf-regions" aria-label="Choose your region">
+      <h2>Choose your region</h2>
+      <div class="rf-region-grid" id="rfRegions"></div>
+    </section>
+    <section aria-labelledby="rfHeading">
+      <div class="rf-toolbar">
+        <h2 id="rfHeading">Discover across the Philippines</h2>
+        <button type="button" id="rfReset" hidden>Clear region</button>
+        <label>Sort: <select id="rfSort"><option value="new">Newest first</option><option value="low">Price: low to high</option><option value="high">Price: high to low</option></select></label>
+      </div>
+      <div class="rf-grid" id="rfProducts" aria-live="polite"></div>
+      <button type="button" class="rf-more" id="rfMore">Explore more finds</button>
+    </section>
+  </main>
+  <script src="../shared/nav_bar.js"></script>
+  <script src="regional_finds.js"></script>
+  <script src="../shared/nav_loader.js"></script>
+</body>
+</html>
